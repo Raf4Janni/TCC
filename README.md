@@ -1,6 +1,6 @@
 # TCC
 Final TCC Project<br>
-Members:<br>
+<strong>Members:<strong><br>
 Livia Emidio: Project Owner<br>
 João Vitor Vasconcelos Jacob: Tech Leader<br>
 Rafael Said Jannini: Developer<br>
