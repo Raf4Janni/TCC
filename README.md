@@ -1,10 +1,10 @@
 # TCC
-Final TCC Project
-Members:
-Livia Emidio: Project Owner
-João Vitor Vasconcelos Jacob: Tech Lead
-Rafael Said Jannini: Developer
-Davi Francisco de Faria: Developer
-Matheus Naoki Nebo: Developer
-Pedro Nunes Bighetti: Developer
-Vitor Hugo Silva Guilhoto: Developer
+Final TCC Project<br>
+Members:<br>
+Livia Emidio: Project Owner<br>
+João Vitor Vasconcelos Jacob: Tech Lead<br>
+Rafael Said Jannini: Developer<br>
+Davi Francisco de Faria: Developer<br>
+Matheus Naoki Nebo: Developer<br>
+Pedro Nunes Bighetti: Developer<br>
+Vitor Hugo Silva Guilhoto: Developer<br>
