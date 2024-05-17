@@ -2,7 +2,7 @@
 Final TCC Project<br>
 Members:<br>
 Livia Emidio: Project Owner<br>
-João Vitor Vasconcelos Jacob: Tech Lead<br>
+João Vitor Vasconcelos Jacob: Tech Leader<br>
 Rafael Said Jannini: Developer<br>
 Davi Francisco de Faria: Developer<br>
 Matheus Naoki Nebo: Developer<br>
