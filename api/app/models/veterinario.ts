@@ -1,15 +1,12 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export default class Clinica extends BaseModel {
+export default class Veterinario extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare nome: string
-
-  @column()
-  declare CNPJ: string
+  declare CRMV: string
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
