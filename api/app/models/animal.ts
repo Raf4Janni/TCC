@@ -11,13 +11,13 @@ export default class Animal extends BaseModel {
   @column()
   declare sexo: string
 
-  @column()
+  @column.dateTime()
   declare dataResgate: DateTime
 
   @column()
   declare especie: string
 
-  @column()
+  @column.dateTime()
   declare dataNascimento: DateTime
 
   @column()
