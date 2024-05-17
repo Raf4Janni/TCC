@@ -1,36 +1,24 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export default class Animal extends BaseModel {
+export default class Endereco extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare nome: string
+  declare CEP: string
 
   @column()
-  declare sexo: string
+  declare rua: string
 
   @column()
-  declare dataResgate: DateTime
+  declare bairro: string
 
   @column()
-  declare especie: string
+  declare estado: string
 
   @column()
-  declare dataNascimento: DateTime
-
-  @column()
-  declare cor: string
-
-  @column()
-  declare localResgate: string
-
-  @column()
-  declare estadoSaude: string
-
-  @column()
-  declare raca: string
+  declare numero: number
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
