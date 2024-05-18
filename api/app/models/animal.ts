@@ -11,14 +11,8 @@ export default class Animal extends BaseModel {
   @column()
   declare sexo: string
 
-  @column()
+  @column.dateTime()
   declare dataResgate: DateTime
-
-  @column()
-  declare especie: string
-
-  @column()
-  declare dataNascimento: DateTime
 
   @column()
   declare cor: string
@@ -31,7 +25,7 @@ export default class Animal extends BaseModel {
 
   @column()
   declare raca: string
-
+  
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 

@@ -6,20 +6,29 @@ export default class Endereco extends BaseModel {
   declare id: number
 
   @column()
-  declare CEP: string
+  declare CEP: number
+
+  @column()
+  declare Estado: string
+
+  @column()
+  declare Cidade: string
+
+  @column()
+  declare Bairro: string
 
   @column()
   declare rua: string
 
   @column()
-  declare bairro: string
-
-  @column()
-  declare estado: string
-
-  @column()
   declare numero: number
 
+  //@hasMany(()=> Pessoa)
+  //declare pessoa: HasMany<typeof Pessoa>
+
+  //@hasMany(()=>Clinica)
+  //declare clinica: HasMany<typeof Clinica>
+  
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
