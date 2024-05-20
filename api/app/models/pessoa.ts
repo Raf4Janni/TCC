@@ -4,13 +4,13 @@ import { BaseModel, column } from '@adonisjs/lucid/orm'
 export default class Pessoa extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
-
+  
   @column()
   declare nome: string
 
   @column()
   declare CPF: string
-
+  
   @column()
   declare RG: string
 
@@ -21,7 +21,7 @@ export default class Pessoa extends BaseModel {
   declare senha: string
 
   @column.dateTime()
-  declare dataNascimento: DateTime
+  declare dataDeNascimento: DateTime
 
   @column()
   declare sexo: string
@@ -29,6 +29,7 @@ export default class Pessoa extends BaseModel {
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({ autoCreate: true})
   declare deletadoEm: DateTime
+  
 }

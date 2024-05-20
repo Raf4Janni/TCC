@@ -17,9 +17,15 @@ export default class Registro extends BaseModel {
   @column()
   declare tipoRegistro: string
 
+  //@hasMany(()=> Voluntario)
+  //declare voluntario: HasMany<typeof Voluntario>
+
+  //@hasMany(()=> Veterinario)
+  //declare veterinario: HasMany<typeof Veterinario>
+
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true})
+  @column.dateTime({ autoCreate: true })
   declare deletadoEm: DateTime
 }
