@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon'
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 
-export default class Animal extends BaseModel {
+export default class Pessoa extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
@@ -9,28 +9,22 @@ export default class Animal extends BaseModel {
   declare nome: string
 
   @column()
-  declare sexo: string
-
-  @column.dateTime()
-  declare dataResgate: DateTime
+  declare CPF: string
 
   @column()
-  declare especie: string
+  declare RG: string
+
+  @column()
+  declare email: string
+
+  @column()
+  declare senha: string
 
   @column.dateTime()
   declare dataNascimento: DateTime
 
   @column()
-  declare cor: string
-
-  @column()
-  declare localResgate: string
-
-  @column()
-  declare estadoSaude: string
-
-  @column()
-  declare raca: string
+  declare sexo: string
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

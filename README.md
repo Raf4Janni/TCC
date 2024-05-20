@@ -1,5 +1,5 @@
 # TCC
-<strong>Final TCC Project<br>
+<h1><strong>Final TCC Project<br></h1>
 Members:</strong><br>
 Livia Emidio: Project Owner<br>
 João Vitor Vasconcelos Jacob: Tech Leader<br>
