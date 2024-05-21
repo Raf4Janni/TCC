@@ -9,7 +9,7 @@ export default class Endereco extends BaseModel {
   declare id: number
 
   @column()
-  declare CEP: number
+  declare cep: number
 
   @column()
   declare estado: string

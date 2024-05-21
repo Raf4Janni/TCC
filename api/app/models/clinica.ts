@@ -9,7 +9,7 @@ export default class Clinica extends BaseModel {
   declare nome: string
 
   @column()
-  declare CNPJ: string
+  declare cnpj: string
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

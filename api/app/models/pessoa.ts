@@ -9,10 +9,10 @@ export default class Pessoa extends BaseModel {
   declare nome: string
 
   @column()
-  declare CPF: string
+  declare cpf: string
 
   @column()
-  declare RG: string
+  declare rg: string
 
   @column()
   declare email: string
