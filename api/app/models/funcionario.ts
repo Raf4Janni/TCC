@@ -3,6 +3,7 @@ import type { HasOne } from '@adonisjs/lucid/types/relations'
 import { column, BaseModel, hasOne } from '@adonisjs/lucid/orm'
 import Clinica from './clinica.js'
 import Pessoa from './pessoa.js'
+import Administrador from './administrador.js'
 
 export default class Funcionario extends BaseModel {
   @column({ isPrimary: true })
@@ -16,6 +17,9 @@ export default class Funcionario extends BaseModel {
 
   @hasOne(() => Clinica)
   declare clinica: HasOne<typeof Clinica>
+
+  @hasOne(() => Administrador)
+  declare administrador: HasOne<typeof Administrador>
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
