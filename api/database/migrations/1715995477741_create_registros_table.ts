@@ -1,5 +1,4 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
-
 export default class extends BaseSchema {
   protected tableName = 'registros'
 
@@ -9,6 +8,9 @@ export default class extends BaseSchema {
       table.string('autor')
       table.string('informacoes')
       table.string('tipo_registro')
+      table.dateTime('data_registro')
+      table.integer('voluntario_id').unsigned().references('voluntarios.id').onDelete('CASCADE')
+      table.integer('veterinario_id').unsigned().references('veterinarios.id').onDelete('CASCADE')
       table.timestamp('criado_em')
       table.timestamp('deletado_em')
     })

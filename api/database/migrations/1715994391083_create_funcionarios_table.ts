@@ -9,6 +9,7 @@ export default class extends BaseSchema {
       table.integer('salario')
       table.integer('pessoa_id').unsigned().references('pessoas.id').onDelete('CASCADE')
       table.integer('administrador_id').unsigned().references('administradores.id').onDelete('CASCADE')
+      table.integer('clinica_id').unsigned().references('clinicas.id').onDelete('CASCADE')
       table.timestamp('criado_em')
       table.timestamp('deletado_em')
     })
