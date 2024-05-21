@@ -1,3 +1,5 @@
 // import type { HttpContext } from '@adonisjs/core/http'
 
-export default class ClientesController {}
+export default class ClientesController {
+    
+}

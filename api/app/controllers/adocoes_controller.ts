@@ -59,16 +59,11 @@ export default class AdocoesController {
     
         const adocao = await Adocao.findOrFail(params.id)
     
-    
-        adocao.title = body.title
-        moment.description = body.description
-    
-    
-        await moment.save()
+        await adocao.save()
            
         return{
             message: "Substituído com sucesso",
-            data: moment
+            data: adocao
         }
     }
 }

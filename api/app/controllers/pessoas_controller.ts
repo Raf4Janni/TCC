@@ -32,8 +32,8 @@ export default class PessoasController {
 
     pessoa.id = body.id
     pessoa.nome = body.nome
-    pessoa.CPF = body.CPF
-    pessoa.RG = body.RG
+    pessoa.cpf = body.cpf
+    pessoa.rg = body.rg
     pessoa.email = body.email
     pessoa.senha = body.senha
     pessoa.dataDeNascimento = body.dataDeNascimento

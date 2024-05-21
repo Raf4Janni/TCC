@@ -31,7 +31,7 @@ export default class ClinicasController {
 
     clinica.id = body.id
     clinica.nome = body.nome
-    clinica.CNPJ = body.CNPJ
+    clinica.cnpj = body.cnpj
 
     await clinica.save()
     return {
