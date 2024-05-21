@@ -1,5 +1,7 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
+import { column, BaseModel, hasOne } from '@adonisjs/lucid/orm'
+import Funcionario from './funcionario.js'
 
 export default class Veterinario extends BaseModel {
   @column({ isPrimary: true })
@@ -8,9 +10,12 @@ export default class Veterinario extends BaseModel {
   @column()
   declare CRMV: string
 
+  @hasOne(() => Funcionario)
+  declare funcionario: HasOne<typeof Funcionario>
+
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true})
+  @column.dateTime({ autoCreate: true })
   declare deletadoEm: DateTime
 }

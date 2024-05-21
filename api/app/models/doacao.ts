@@ -7,18 +7,10 @@ export default class Doacao extends BaseModel {
 
   @column()
   declare categoria: string
-<<<<<<< HEAD
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true})
-=======
-  
   @column.dateTime({ autoCreate: true })
-  declare criadoEm: DateTime
-
-  @column.dateTime({ autoCreate: true })
->>>>>>> c7009f53b975e47f54a1fd2feb3a914859c72bbf
   declare deletadoEm: DateTime
 }

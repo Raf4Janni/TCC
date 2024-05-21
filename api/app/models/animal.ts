@@ -31,7 +31,7 @@ export default class Animal extends BaseModel {
 
   @column()
   declare raca: string
-  
+
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 

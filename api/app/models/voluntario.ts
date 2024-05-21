@@ -1,12 +1,14 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
+import { column, BaseModel, hasOne } from '@adonisjs/lucid/orm'
+import Funcionario from './funcionario.js'
 
 export default class Voluntario extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
-  //@hasOne(() => Funcionario)
-  //declare funcionario: hasOne<typeof Funcionario>
+  @hasOne(() => Funcionario)
+  declare funcionario: HasOne<typeof Funcionario>
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
