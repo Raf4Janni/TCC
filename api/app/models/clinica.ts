@@ -14,6 +14,6 @@ export default class Clinica extends BaseModel {
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true})
+  @column.dateTime({ autoCreate: true })
   declare deletadoEm: DateTime
 }

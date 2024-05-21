@@ -1,10 +1,6 @@
 import { DateTime } from 'luxon'
-import {
-  column,
-  BaseModel,
-  hasMany
-} from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
+import { column, BaseModel, hasMany } from '@adonisjs/lucid/orm'
 import Pessoa from './pessoa.js'
 import Clinica from './clinica.js'
 
@@ -15,12 +11,12 @@ export default class Telefone extends BaseModel {
   @column()
   declare numeroTelefone: number
 
-  @hasMany(()=> Pessoa)
+  @hasMany(() => Pessoa)
   declare pessoa: HasMany<typeof Pessoa>
 
-  @hasMany(()=>Clinica)
+  @hasMany(() => Clinica)
   declare clinica: HasMany<typeof Clinica>
-  
+
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
