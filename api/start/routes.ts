@@ -30,7 +30,6 @@ router.get('/', async () => {
 })
 
 router.resource('/administradores', AdministradoresController).apiOnly()
-router.resource('/funcionarios', FuncionariosController).apiOnly()
 router.resource('/adocoes', AdocoesController).apiOnly()
 router.resource('/animais', AnimaisController).apiOnly()
 router.resource('/clientes', ClientesController).apiOnly()
@@ -39,6 +38,8 @@ router.resource('/doacoes', DoacoesController).apiOnly()
 router.resource('/enderecos', EnderecosController).apiOnly()
 router.resource('/pessoas', PessoasController).apiOnly()
 router.resource('/registro', RegistroController).apiOnly()
-router.resource('telefones', TelefonesController).apiOnly()
-router.resource('veterinario', VeterinarioController).apiOnly()
-router.resource('voluntario', VoluntarioController).apiOnly()
+router.resource('/telefones', TelefonesController).apiOnly() //retirar
+router.resource('/veterinario', VeterinarioController).apiOnly()
+router.resource('/voluntario', VoluntarioController).apiOnly()
+
+router.post('/telefone/:clinicaId/:pessoaId/teste', [TelefonesController, 'store'])

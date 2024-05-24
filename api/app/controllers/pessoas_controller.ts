@@ -36,7 +36,7 @@ export default class PessoasController {
     pessoa.rg = body.rg
     pessoa.email = body.email
     pessoa.senha = body.senha
-    pessoa.dataDeNascimento = body.dataDeNascimento
+    pessoa.data_nascimento = body.dataNascimento
     pessoa.sexo = body.sexo
 
     await pessoa.save()

@@ -21,7 +21,7 @@ export default class Pessoa extends BaseModel {
   declare senha: string
 
   @column.dateTime()
-  declare dataDeNascimento: DateTime
+  declare data_nascimento: DateTime
 
   @column()
   declare sexo: string
