@@ -7,6 +7,9 @@ export default class Voluntario extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare funcionario_id: number
+  
   @hasOne(() => Funcionario)
   declare funcionario: HasOne<typeof Funcionario>
 

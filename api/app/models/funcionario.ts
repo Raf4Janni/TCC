@@ -12,6 +12,15 @@ export default class Funcionario extends BaseModel {
   @column()
   declare salario: number
 
+  @column()
+  declare pessoa_id:number
+
+  @column()
+  declare clinica_id:number
+
+  @column()
+  declare administrador_id:number
+
   @hasOne(() => Pessoa)
   declare pessoa: HasOne<typeof Pessoa>
 

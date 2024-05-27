@@ -36,10 +36,11 @@ router.resource('/clientes', ClientesController).apiOnly()
 router.resource('/clinicas', ClinicasController).apiOnly()
 router.resource('/doacoes', DoacoesController).apiOnly()
 router.resource('/enderecos', EnderecosController).apiOnly()
+router.resource('/funcionario', FuncionariosController).apiOnly()
 router.resource('/pessoas', PessoasController).apiOnly()
 router.resource('/registro', RegistroController).apiOnly()
-router.resource('/telefones', TelefonesController).apiOnly() //retirar
+router.resource('/telefones', TelefonesController).apiOnly()
 router.resource('/veterinario', VeterinarioController).apiOnly()
 router.resource('/voluntario', VoluntarioController).apiOnly()
 
-router.post('/telefone/:clinicaId/:pessoaId/teste', [TelefonesController, 'store'])
+router.post('/telefones/:clinica_id/:pessoa_id/teste', [TelefonesController, 'store'])

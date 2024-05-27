@@ -26,6 +26,12 @@ export default class Endereco extends BaseModel {
   @column()
   declare numero: number
 
+  @column()
+  declare pessoa_id: number
+
+  @column()
+  declare clinica_id:number
+
   @hasMany(() => Pessoa)
   declare pessoa: HasMany<typeof Pessoa>
 

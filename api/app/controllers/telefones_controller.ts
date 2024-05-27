@@ -1,8 +1,7 @@
 import Telefone from '#models/telefone'
-import Pessoa from '#models/pessoa'
-import Clinica from '#models/clinica'
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
+import { DateTime } from 'luxon'
 
 export default class TelefonesController {
   async index({}: HttpContext) {
@@ -14,14 +13,15 @@ export default class TelefonesController {
   async store({ request, params, response }: HttpContext) {
     const body = request.body()
 
-    //const pessoa = Pessoa.findOrFail(params.idPessoa)
-    //const clinica = Clinica.findOrFail(params.idClinica)
+    let telefone = new Telefone();
+    telefone.numeroTelefone = body.numeroTelefone
+    telefone.clinica_id = params.clinica_id;
+    telefone.pessoa_id = params.pessoa_id;
+    telefone.criadoEm = DateTime.now()
+    telefone.deletadoEm = DateTime.now()
 
-    body.clinica = params.clinicaId
-    body.pessoa = params.pessoaId
-
-    const telefone = await Telefone.create(body)
-
+    await telefone.save();
+    
     response.status(201)
 
     return {
@@ -34,5 +34,23 @@ export default class TelefonesController {
     const telefone = await Telefone.findOrFail(params.id)
 
     return telefone
+  }
+
+  async update({request, params}: HttpContext){
+    const body = request.body()
+    let telefone = await Telefone.findOrFail(params.id)
+
+    telefone.numeroTelefone = body.numero_telefone
+    telefone.pessoa_id = body.pessoa_id
+    telefone.clinica_id = body.clinica_id
+
+    telefone.save()
+  }
+
+  async destroy({params} : HttpContext){
+    const telefone = await Telefone.findOrFail(params.id)
+
+    telefone.deletadoEm = DateTime.now()
+    telefone.save()
   }
 }

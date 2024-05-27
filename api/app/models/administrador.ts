@@ -8,6 +8,12 @@ export default class Administrador extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare pessoa_id: number
+
+  @column()
+  declare clinica_id: number
+
   @hasOne(() => Pessoa)
   declare pessoa: HasOne<typeof Pessoa>
 

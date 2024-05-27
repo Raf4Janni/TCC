@@ -9,6 +9,15 @@ export default class Adocao extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare animal_id: number
+
+  @column()
+  declare cliente_id: number
+
+  @column()
+  declare registro_id: number
+  
   @hasOne(() => Animal)
   declare animal: HasOne<typeof Animal>
 
@@ -21,6 +30,6 @@ export default class Adocao extends BaseModel {
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime({})
   declare deletadoEm: DateTime
 }

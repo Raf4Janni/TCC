@@ -10,6 +10,9 @@ export default class Veterinario extends BaseModel {
   @column()
   declare crmv: string
 
+  @column()
+  declare funcionario_id: number
+
   @hasOne(() => Funcionario)
   declare funcionario: HasOne<typeof Funcionario>
 

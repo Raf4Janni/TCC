@@ -20,6 +20,12 @@ export default class Registro extends BaseModel {
   @column()
   declare tipoRegistro: string
 
+  @column()
+  declare voluntario_id: number
+
+  @column()
+  declare veterinario_id: number
+
   @hasMany(() => Voluntario)
   declare voluntario: HasMany<typeof Voluntario>
 

@@ -11,6 +11,12 @@ export default class Telefone extends BaseModel {
   @column()
   declare numeroTelefone: number
 
+  @column()
+  declare pessoa_id : number
+
+  @column()
+  declare clinica_id : number
+
   @hasMany(() => Pessoa)
   declare pessoa: HasMany<typeof Pessoa>
 
