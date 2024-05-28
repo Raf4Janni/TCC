@@ -35,6 +35,6 @@ export default class Registro extends BaseModel {
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare deletadoEm: DateTime
 }

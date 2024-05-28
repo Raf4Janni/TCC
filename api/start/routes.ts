@@ -44,3 +44,7 @@ router.resource('/veterinario', VeterinarioController).apiOnly()
 router.resource('/voluntario', VoluntarioController).apiOnly()
 
 router.post('/telefones/:clinica_id/:pessoa_id/teste', [TelefonesController, 'store'])
+router.post('/administradores/:pessoa_id/:clinica_id/teste', [AdministradoresController, 'store'])
+router.post('/adocoes/:cliente_id/:registro_id/:animal_id/teste', [AdocoesController, 'store'])
+router.post('/clientes/:pessoa_id/:clinica_id/teste', [ClientesController, 'store'])
+router.post('/doacoes/:cliente_id/:voluntario_id/teste', [DoacoesController, 'store'])

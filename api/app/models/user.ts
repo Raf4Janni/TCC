@@ -26,7 +26,7 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare deletadoEm: DateTime | null
 
   static accessTokens = DbAccessTokensProvider.forModel(User)

@@ -8,9 +8,15 @@ export default class Doacao extends BaseModel {
   @column()
   declare categoria: string
 
+  @column()
+  declare cliente_id: number
+
+  @column()
+  declare voluntario_id: number
+
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare deletadoEm: DateTime
 }

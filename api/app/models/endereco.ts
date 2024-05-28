@@ -41,6 +41,6 @@ export default class Endereco extends BaseModel {
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare deletadoEm: DateTime
 }

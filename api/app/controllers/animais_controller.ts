@@ -1,8 +1,9 @@
 import Animal from '#models/animal'
 import type { HttpContext } from '@adonisjs/core/http'
+import { DateTime } from 'luxon'
 
 export default class AnimaisController {
-  async index({}: HttpContext) {
+  async index() {
     const animais = await Animal.all()
 
     return animais
@@ -14,10 +15,8 @@ export default class AnimaisController {
     const animal = await Animal.create(body)
 
     response.status(201)
-    return {
-      message: 'Animal cadastrado com sucesso',
-      animal,
-    }
+    
+    return animal
   }
 
   async show({ params }: HttpContext) {
@@ -28,7 +27,7 @@ export default class AnimaisController {
 
   async update({ params, request }: HttpContext) {
     const body = request.body()
-    const animal = await Animal.findOrFail(params.id)
+    let animal = await Animal.findOrFail(params.id)
 
     animal.nome = body.nome
     animal.sexo = body.sexo
@@ -41,17 +40,16 @@ export default class AnimaisController {
     animal.raca = body.raca
 
     await animal.save()
-    return {
-      message: 'Animal atualizado com sucesso',
-    }
+
+    return animal
   }
 
-  async destroy({ params }: HttpContext) {
+  async destroy({ params } : HttpContext){
     const animal = await Animal.findOrFail(params.id)
-    await animal.delete()
 
-    return {
-      message: 'Animal deletado com sucesso',
-    }
+    animal.deletadoEm = DateTime.now()
+    animal.save()
+
+    return animal
   }
 }

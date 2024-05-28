@@ -1,69 +1,41 @@
 import Adocao from '#models/adocao'
 import type { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
+import { DateTime } from 'luxon'
 
 export default class AdocoesController {
-    public async store({request, response}:HttpContext){
-       
-        const body = request.body()
-       
-        const adocao = await Adocao.create(body)
-       
+    async index() {
+        const adocoes = await db.from('adocoes').select('*')
+    
+        return adocoes
+    }
+    
+    async store({ params, response }: HttpContext) {
+    
+        let adocao = new Adocao()
+        adocao.cliente_id = params.cliente_id
+        adocao.registro_id = params.registro_id
+        adocao.animal_id = params.animal_id
+
+        await adocao.save();
+        
         response.status(201)
     
-    
-        return{
-            message:"Adoção adicionado com sucesso!",
-            data: adocao
-        }
-    
-    
+        return adocao
     }
-       
-    public async index(){
     
-        const adocoes = await Adocao.all()
-    
-        return{
-            data:adocoes
-        }
-    }
-       
-    public async show({ params }:HttpContext){
-    
+    async show({ params }: HttpContext) {
         const adocao = await Adocao.findOrFail(params.id)
-           
-        return{
-            data: adocao
-        }
+    
+        return adocao
     }
     
-    
-    public async destroy({params}:HttpContext){
-    
+    async destroy({params} : HttpContext){
         const adocao = await Adocao.findOrFail(params.id)
-           
-        await adocao.delete()
+    
+        adocao.deletadoEm = DateTime.now()
+        adocao.save()
 
-        return{
-            message: "Adoção removida com Sucesso",
-            data: adocao
-        }
-    }
-    
-    
-    public async update({params,request}:HttpContext){
-    
-    
-        const body = request.body()
-    
-    
-        const adocao = await Adocao.findOrFail(params.id)
-    
-        await adocao.save()
-           
-        return{
-            message: "Substituído com sucesso",
-            data: adocao
-        }
+        return adocao
     }
 }

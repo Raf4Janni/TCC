@@ -14,9 +14,15 @@ export default class Cliente extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare pessoa_id: number
+
+  @column()
+  declare clinica_id: number
+
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true })
+  @column.dateTime()
   declare deletadoEm: DateTime
 }

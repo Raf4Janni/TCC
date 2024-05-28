@@ -1,8 +1,11 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Clinica from '#models/clinica'
+import { DateTime } from 'luxon'
+import db from '@adonisjs/lucid/services/db'
+
 export default class ClinicasController {
-  async index({}: HttpContext) {
-    const clinicas = await Clinica.all()
+  async index() {
+    const clinicas = await db.from('clinicas').select('*')
 
     return clinicas
   }
@@ -13,10 +16,8 @@ export default class ClinicasController {
     const clinica = await Clinica.create(body)
 
     response.status(201)
-    return {
-      message: 'Clinica cadastrada com sucesso',
-      clinica,
-    }
+
+    return clinica
   }
 
   async show({ params }: HttpContext) {
@@ -27,24 +28,23 @@ export default class ClinicasController {
 
   async update({ params, request }: HttpContext) {
     const body = request.body()
-    const clinica = await Clinica.findOrFail(params.id)
+    let clinica = await Clinica.findOrFail(params.id)
 
     clinica.id = body.id
     clinica.nome = body.nome
     clinica.cnpj = body.cnpj
 
-    await clinica.save()
-    return {
-      message: 'Clinica atualizada com sucesso',
-    }
+    clinica.save()
+
+    return clinica
   }
 
-  async destroy({ params }: HttpContext) {
+  async destroy({ params } : HttpContext){
     const clinica = await Clinica.findOrFail(params.id)
-    await clinica.delete()
 
-    return {
-      message: 'Clinica deletada com sucesso',
-    }
-  }
+    clinica.deletadoEm = DateTime.now()
+    clinica.save()
+
+    return clinica
+  } 
 }

@@ -4,7 +4,7 @@ import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 
 export default class TelefonesController {
-  async index({}: HttpContext) {
+  async index() {
     const telefone = await db.from('telefones').select('*')
 
     return telefone

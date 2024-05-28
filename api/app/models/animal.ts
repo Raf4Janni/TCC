@@ -35,6 +35,6 @@ export default class Animal extends BaseModel {
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({})
+  @column.dateTime()
   declare deletadoEm: DateTime
 }

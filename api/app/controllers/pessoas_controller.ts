@@ -2,7 +2,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import Pessoa from '#models/pessoa'
 
 export default class PessoasController {
-  async index({}: HttpContext) {
+  async index() {
     const pessoas = await Pessoa.all()
 
     return pessoas

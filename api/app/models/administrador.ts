@@ -10,7 +10,7 @@ export default class Administrador extends BaseModel {
 
   @hasOne(() => Clinica)
   declare clinica: HasOne<typeof Clinica>
-  
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -20,10 +20,9 @@ export default class Administrador extends BaseModel {
   @column()
   declare clinica_id: number
 
-
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
-  @column.dateTime({ autoCreate: true })
-  declare deletadoEM: DateTime
+  @column.dateTime()
+  declare deletadoEm: DateTime
 }
