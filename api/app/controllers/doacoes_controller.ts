@@ -4,51 +4,50 @@ import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 
 export default class DoacoesController {
-    async index() {
-        const doacoes = await db.from('doacoes').select('*')
-    
-        return doacoes
-    }
-    
-    async store({ request, params, response }: HttpContext) {
-        const body = request.body()
+  async index() {
+    const doacoes = await db.from('doacoes').select('*')
 
-        let doacao = new Doacao()
-        doacao.categoria = body.categoria
-        doacao.cliente_id = params.cliente_id
-        doacao.voluntario_id = params.voluntario_id
+    return doacoes
+  }
 
-        await doacao.save();
-        
-        response.status(201)
-    
-        return doacao
-    }
-    
-    async show({ params }: HttpContext) {
-        const doacao = await Doacao.findOrFail(params.id)
-    
-        return doacao
-    }
-    
-    async update({request, params}: HttpContext){
-        const body = request.body()
-        let doacao = await Doacao.findOrFail(params.id)
-    
-        doacao.categoria = body.categoria
-    
-        doacao.save()
+  async store({ request, params, response }: HttpContext) {
+    const body = request.body()
 
-        return doacao
+    let doacao = new Doacao()
+    doacao.categoria = body.categoria
+    doacao.cliente_id = params.cliente_id
+    doacao.voluntario_id = params.voluntario_id
 
-    }
-    
-    async destroy({ params } : HttpContext){
-        const doacao = await Doacao.findOrFail(params.id)
-    
-        doacao.deletadoEm = DateTime.now()
-        doacao.save()
+    await doacao.save()
 
-        return doacao
-    }
+    response.status(201)
+
+    return doacao
+  }
+
+  async show({ params }: HttpContext) {
+    const doacao = await Doacao.findOrFail(params.id)
+
+    return doacao
+  }
+
+  async update({ request, params }: HttpContext) {
+    const body = request.body()
+    let doacao = await Doacao.findOrFail(params.id)
+
+    doacao.categoria = body.categoria
+
+    doacao.save()
+
+    return doacao
+  }
+
+  async destroy({ params }: HttpContext) {
+    const doacao = await Doacao.findOrFail(params.id)
+
+    doacao.deletadoEm = DateTime.now()
+    doacao.save()
+
+    return doacao
+  }
 }

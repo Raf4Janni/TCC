@@ -4,37 +4,36 @@ import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 
 export default class AdministradoresController {
-    async index() {
-        const administradores = await db.from('administradores').select('*')
-    
-        return administradores
-    }
-    
-    async store({ params, response }: HttpContext) {
-    
-        let administrador = new Administrador()
-        administrador.pessoa_id = params.pessoa_id
-        administrador.clinica_id = params.clinica_id
+  async index() {
+    const administradores = await db.from('administradores').select('*')
 
-        await administrador.save();
-        
-        response.status(201)
-    
-        return administrador
-    }
-    
-    async show({ params }: HttpContext) {
-        const administrador = await Administrador.findOrFail(params.id)
-    
-        return administrador
-    }
-    
-    async destroy({params} : HttpContext){
-        const administrador = await Administrador.findOrFail(params.id)
-    
-        administrador.deletadoEm = DateTime.now()
-        administrador.save()
+    return administradores
+  }
 
-        return administrador
-    }
+  async store({ params, response }: HttpContext) {
+    let administrador = new Administrador()
+    administrador.pessoa_id = params.pessoa_id
+    administrador.clinica_id = params.clinica_id
+
+    await administrador.save()
+
+    response.status(201)
+
+    return administrador
+  }
+
+  async show({ params }: HttpContext) {
+    const administrador = await Administrador.findOrFail(params.id)
+
+    return administrador
+  }
+
+  async destroy({ params }: HttpContext) {
+    const administrador = await Administrador.findOrFail(params.id)
+
+    administrador.deletadoEm = DateTime.now()
+    administrador.save()
+
+    return administrador
+  }
 }
