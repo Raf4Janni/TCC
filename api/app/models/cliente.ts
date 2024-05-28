@@ -5,14 +5,14 @@ import Clinica from './clinica.js'
 import Pessoa from './pessoa.js'
 
 export default class Cliente extends BaseModel {
-  @column({ isPrimary: true })
-  declare id: number
-
   @hasOne(() => Pessoa)
   declare pessoa: HasOne<typeof Pessoa>
 
   @hasOne(() => Clinica)
-  declare clinica: HasOne<typeof Clinica>
+  declare clinica: HasOne<typeof Clinica> 
+  
+  @column({ isPrimary: true })
+  declare id: number
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

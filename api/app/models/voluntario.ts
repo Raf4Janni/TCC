@@ -3,15 +3,15 @@ import type { HasOne } from '@adonisjs/lucid/types/relations'
 import { column, BaseModel, hasOne } from '@adonisjs/lucid/orm'
 import Funcionario from './funcionario.js'
 
-export default class Voluntario extends BaseModel {
+export default class Voluntario extends BaseModel {  
+  @hasOne(() => Funcionario)
+  declare funcionario: HasOne<typeof Funcionario>
+
   @column({ isPrimary: true })
   declare id: number
 
   @column()
   declare funcionario_id: number
-  
-  @hasOne(() => Funcionario)
-  declare funcionario: HasOne<typeof Funcionario>
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

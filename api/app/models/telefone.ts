@@ -1,10 +1,16 @@
 import { DateTime } from 'luxon'
-import type { HasMany } from '@adonisjs/lucid/types/relations'
-import { column, BaseModel, hasMany } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
+import { column, BaseModel, hasOne } from '@adonisjs/lucid/orm'
 import Pessoa from './pessoa.js'
 import Clinica from './clinica.js'
 
 export default class Telefone extends BaseModel {
+  @hasOne(() => Clinica)
+  declare clinica: HasOne<typeof Clinica>
+
+  @hasOne(() => Pessoa)
+  declare pessoa: HasOne<typeof Pessoa>
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -16,12 +22,6 @@ export default class Telefone extends BaseModel {
 
   @column()
   declare clinica_id : number
-
-  @hasMany(() => Pessoa)
-  declare pessoa: HasMany<typeof Pessoa>
-
-  @hasMany(() => Clinica)
-  declare clinica: HasMany<typeof Clinica>
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

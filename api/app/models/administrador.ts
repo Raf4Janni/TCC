@@ -5,6 +5,12 @@ import Pessoa from './pessoa.js'
 import Clinica from './clinica.js'
 
 export default class Administrador extends BaseModel {
+  @hasOne(() => Pessoa)
+  declare pessoa: HasOne<typeof Pessoa>
+
+  @hasOne(() => Clinica)
+  declare clinica: HasOne<typeof Clinica>
+  
   @column({ isPrimary: true })
   declare id: number
 
@@ -14,11 +20,6 @@ export default class Administrador extends BaseModel {
   @column()
   declare clinica_id: number
 
-  @hasOne(() => Pessoa)
-  declare pessoa: HasOne<typeof Pessoa>
-
-  @hasOne(() => Clinica)
-  declare clinica: HasOne<typeof Clinica>
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

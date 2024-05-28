@@ -6,6 +6,15 @@ import Cliente from './cliente.js'
 import Registro from './registro.js'
 
 export default class Adocao extends BaseModel {
+  @hasOne(() => Cliente)
+  declare cliente: HasOne<typeof Cliente>
+
+  @hasOne(() => Registro)
+  declare registro: HasOne<typeof Registro>
+  
+  @hasOne(() => Animal)
+  declare animal: HasOne<typeof Animal>
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -18,14 +27,6 @@ export default class Adocao extends BaseModel {
   @column()
   declare registro_id: number
   
-  @hasOne(() => Animal)
-  declare animal: HasOne<typeof Animal>
-
-  @hasOne(() => Cliente)
-  declare cliente: HasOne<typeof Cliente>
-
-  @hasOne(() => Registro)
-  declare registro: HasOne<typeof Registro>
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

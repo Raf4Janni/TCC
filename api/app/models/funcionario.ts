@@ -6,6 +6,15 @@ import Pessoa from './pessoa.js'
 import Administrador from './administrador.js'
 
 export default class Funcionario extends BaseModel {
+  @hasOne(() => Pessoa)
+  declare pessoa: HasOne<typeof Pessoa>
+
+  @hasOne(() => Clinica)
+  declare clinica: HasOne<typeof Clinica>
+
+  @hasOne(() => Administrador)
+  declare administrador: HasOne<typeof Administrador>
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -20,15 +29,6 @@ export default class Funcionario extends BaseModel {
 
   @column()
   declare administrador_id:number
-
-  @hasOne(() => Pessoa)
-  declare pessoa: HasOne<typeof Pessoa>
-
-  @hasOne(() => Clinica)
-  declare clinica: HasOne<typeof Clinica>
-
-  @hasOne(() => Administrador)
-  declare administrador: HasOne<typeof Administrador>
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
