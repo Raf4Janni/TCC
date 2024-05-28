@@ -9,8 +9,8 @@ export default class Cliente extends BaseModel {
   declare pessoa: HasOne<typeof Pessoa>
 
   @hasOne(() => Clinica)
-  declare clinica: HasOne<typeof Clinica> 
-  
+  declare clinica: HasOne<typeof Clinica>
+
   @column({ isPrimary: true })
   declare id: number
 

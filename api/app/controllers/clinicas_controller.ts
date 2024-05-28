@@ -39,12 +39,12 @@ export default class ClinicasController {
     return clinica
   }
 
-  async destroy({ params } : HttpContext){
+  async destroy({ params }: HttpContext) {
     const clinica = await Clinica.findOrFail(params.id)
 
     clinica.deletadoEm = DateTime.now()
     clinica.save()
 
     return clinica
-  } 
+  }
 }

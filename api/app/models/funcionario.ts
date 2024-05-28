@@ -22,13 +22,13 @@ export default class Funcionario extends BaseModel {
   declare salario: number
 
   @column()
-  declare pessoa_id:number
+  declare pessoa_id: number
 
   @column()
-  declare clinica_id:number
+  declare clinica_id: number
 
   @column()
-  declare administrador_id:number
+  declare administrador_id: number
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

@@ -13,15 +13,15 @@ export default class TelefonesController {
   async store({ request, params, response }: HttpContext) {
     const body = request.body()
 
-    let telefone = new Telefone();
+    let telefone = new Telefone()
     telefone.numeroTelefone = body.numeroTelefone
-    telefone.clinica_id = params.clinica_id;
-    telefone.pessoa_id = params.pessoa_id;
+    telefone.clinica_id = params.clinica_id
+    telefone.pessoa_id = params.pessoa_id
     telefone.criadoEm = DateTime.now()
     telefone.deletadoEm = DateTime.now()
 
-    await telefone.save();
-    
+    await telefone.save()
+
     response.status(201)
 
     return {
@@ -36,18 +36,15 @@ export default class TelefonesController {
     return telefone
   }
 
-  async update({request, params}: HttpContext){
+  async update({ request, params }: HttpContext) {
     const body = request.body()
     let telefone = await Telefone.findOrFail(params.id)
 
-    telefone.numeroTelefone = body.numero_telefone
-    telefone.pessoa_id = body.pessoa_id
-    telefone.clinica_id = body.clinica_id
-
-    telefone.save()
+    telefone.numeroTelefone = body.numeroTelefone
+    await telefone.save()
   }
 
-  async destroy({params} : HttpContext){
+  async destroy({ params }: HttpContext) {
     const telefone = await Telefone.findOrFail(params.id)
 
     telefone.deletadoEm = DateTime.now()

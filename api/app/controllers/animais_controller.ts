@@ -15,7 +15,7 @@ export default class AnimaisController {
     const animal = await Animal.create(body)
 
     response.status(201)
-    
+
     return animal
   }
 
@@ -44,7 +44,7 @@ export default class AnimaisController {
     return animal
   }
 
-  async destroy({ params } : HttpContext){
+  async destroy({ params }: HttpContext){
     const animal = await Animal.findOrFail(params.id)
 
     animal.deletadoEm = DateTime.now()

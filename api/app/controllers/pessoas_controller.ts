@@ -1,5 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Pessoa from '#models/pessoa'
+import { DateTime } from 'luxon'
 
 export default class PessoasController {
   async index() {
@@ -8,16 +9,21 @@ export default class PessoasController {
     return pessoas
   }
 
-  async store({ request, response }: HttpContext) {
+  async store({ request }: HttpContext) {
     const body = request.body()
+    let pessoa = new Pessoa()
+    pessoa.nome = body.nome
+    pessoa.cpf = body.cpf
+    pessoa.rg = body.rg
+    pessoa.email = body.email
+    pessoa.senha = body.senha
+    pessoa.data_nascimento = body.dataNascimento
+    pessoa.sexo = body.sexo
+    pessoa.criadoEm = DateTime.now()
 
-    const pessoa = await Pessoa.create(body)
+    await pessoa.save()
 
-    response.status(201)
-    return {
-      message: 'Pessoa cadastrada com sucesso',
-      pessoa,
-    }
+    return pessoa
   }
 
   async show({ params }: HttpContext) {
@@ -40,17 +46,13 @@ export default class PessoasController {
     pessoa.sexo = body.sexo
 
     await pessoa.save()
-    return {
-      message: 'Pessoa atualizada com sucesso',
-    }
+    return pessoa
   }
 
   async destroy({ params }: HttpContext) {
     const pessoa = await Pessoa.findOrFail(params.id)
-    await pessoa.delete()
+    pessoa.deletadoEm = DateTime.now()
 
-    return {
-      message: 'Pessoa deletada com sucesso',
-    }
+    return pessoa
   }
 }
