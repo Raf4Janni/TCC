@@ -10,7 +10,7 @@ export default class Endereco extends BaseModel {
 
   @hasOne(() => Clinica)
   declare clinica: HasOne<typeof Clinica>
-  
+
   @column({ isPrimary: true })
   declare id: number
 
@@ -36,7 +36,7 @@ export default class Endereco extends BaseModel {
   declare pessoa_id: number
 
   @column()
-  declare clinica_id:number
+  declare clinica_id: number
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

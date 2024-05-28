@@ -18,10 +18,10 @@ export default class Telefone extends BaseModel {
   declare numeroTelefone: number
 
   @column()
-  declare pessoa_id : number
+  declare pessoa_id: number
 
   @column()
-  declare clinica_id : number
+  declare clinica_id: number
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

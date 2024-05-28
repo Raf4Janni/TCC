@@ -26,7 +26,6 @@ export default class Adocao extends BaseModel {
 
   @column()
   declare registro_id: number
-  
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
