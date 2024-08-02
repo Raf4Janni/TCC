@@ -8,10 +8,13 @@ const authConfig = defineConfig({
     api: tokensGuard({
       provider: tokensUserProvider({
         tokens: 'accessTokens',
-        model: () => import('#models/user')
+        model: () => import('#models/pessoa')
       }),
     }),
   },
+  policies: {
+    isAdmin: (user) => user.role === 'admin', // Adicione sua lógica de política aqui
+  }
 })
 
 export default authConfig

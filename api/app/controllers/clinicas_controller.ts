@@ -30,7 +30,6 @@ export default class ClinicasController {
     const body = request.body()
     let clinica = await Clinica.findOrFail(params.id)
 
-    clinica.id = body.id
     clinica.nome = body.nome
     clinica.cnpj = body.cnpj
 

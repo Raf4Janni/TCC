@@ -5,6 +5,9 @@ import Pessoa from './pessoa.js'
 import Clinica from './clinica.js'
 
 export default class Administrador extends BaseModel {
+  
+  public static table = 'administradores';
+
   @hasOne(() => Pessoa)
   declare pessoa: HasOne<typeof Pessoa>
 
@@ -14,7 +17,7 @@ export default class Administrador extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
-  @column()
+    @column()
   declare pessoa_id: number
 
   @column()

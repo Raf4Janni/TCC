@@ -3,6 +3,7 @@ import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import Telefone from './telefone.js'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Endereco from './endereco.js'
+import { DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 
 export default class Pessoa extends BaseModel {
   @hasMany(() => Telefone)
@@ -35,9 +36,31 @@ export default class Pessoa extends BaseModel {
   @column()
   declare sexo: string
 
+  @column()
+  declare cargo: string
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
   @column.dateTime()
   declare deletadoEm: DateTime
+
+  static accessTokens = DbAccessTokensProvider.forModel(Pessoa, {
+    expiresIn: '30 days',
+    prefix: 'oat_',
+    table: 'auth_access_tokens',
+    type: 'auth_token',
+    tokenSecretLength: 40,
+  })
+
+  isAdministrator() {
+    return this.cargo === 'administrator'
+  }
+
+  isVeterinarian() {
+    return this.cargo === 'veterinarian'
+  }
+
+  isVolunteer() {
+    return this.cargo === 'volunteer'
+  }
 }

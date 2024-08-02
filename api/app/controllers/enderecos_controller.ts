@@ -22,7 +22,6 @@ export default class EnderecosController {
     endereco.pessoa_id = params.pessoa_id
     endereco.clinica_id = params.clinica_id
     endereco.criadoEm = DateTime.now()
-    endereco.deletadoEm = DateTime.now()
 
     await endereco.save()
 
