@@ -26,6 +26,10 @@ export default class PessoasController {
   }
 
   async criar({ request, params }: HttpContext) {
+    const pessoa2 = await Pessoa.findOrFail(params.id)
+    if(pessoa2.cargo != "adm"){
+      return "Você não possui acesso para realizar essa tarefa."
+    }
     const body = request.body()
     let pessoa = new Pessoa()
     pessoa.nome = body.nome
@@ -98,6 +102,10 @@ export default class PessoasController {
   }
 
   async atualizar({ request, params }: HttpContext) {
+    const pessoa2 = await Pessoa.findOrFail(params.id)
+    if(pessoa2.cargo != "adm"){
+      return "Você não possui acesso para realizar essa tarefa."
+    }
     const body = request.body()
     const pessoa = await Pessoa.findOrFail(body.id)
     console.log(pessoa)

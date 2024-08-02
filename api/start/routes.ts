@@ -22,11 +22,11 @@ const FuncionariosController = () => import('#controllers/funcionarios_controlle
 const AdministradoresController = () => import('#controllers/administradores_controller')
 
 import router from '@adonisjs/core/services/router'
-import { middleware } from '#start/kernel'
+/*import { middleware } from '#start/kernel'
 import Administrador from '#models/administrador'
 import { administrador, veterinario, voluntario } from '#abilities/main'
 import db from '@adonisjs/lucid/services/db'
-import Pessoa from '#models/pessoa'
+import Pessoa from '#models/pessoa'*/
 
 router.get('/', async () => {
   return {
@@ -36,8 +36,8 @@ router.get('/', async () => {
 
 //ROTAS DO ADMINISTRADOR
 router.resource('/administradores', AdministradoresController).apiOnly()
-router.post('/administradores/AlterarSalario', [AdministradoresController, 'AlteraSalario'])
-router.post('administradores/Demitir', [AdministradoresController, 'Demitir'])
+router.post('/administradores/alteraSalario/:pessoa_id', [AdministradoresController, 'alteraSalario'])
+router.post('administradores/demite/:pessoa_id', [AdministradoresController, 'demite'])
 //router.post('/administradores/:pessoa_id/:clinica_id/teste', [AdministradoresController, 'store'])
 
 //ROTAS DA ADOÇÂO
@@ -68,9 +68,9 @@ router.post('funcionarios/:pessoa_id/:clinica_id/:administrador_id', [Funcionari
 
 //ROTA DA PESSOA
 router.resource('/pessoas', PessoasController).apiOnly()
-router.post('/pessoas/:perfil', [PessoasController, 'criar'])
+router.post('/pessoas/:perfil/:pessoa_id', [PessoasController, 'criar'])
 router.post('/login', [PessoasController, 'login'])
-router.put('/pessoas/atualizar', [PessoasController, 'atualizar'])
+router.put('/pessoas/atualizar/:pessoa_id', [PessoasController, 'atualizar'])
 
 //ROTAS DO REGISTRO
 router.resource('/registros', RegistroController).apiOnly()
@@ -82,15 +82,19 @@ router.post('/telefones/:clinica_id/:pessoa_id/teste', [TelefonesController, 'st
 
 //ROTA DO VETERINARIO
 router.resource('/veterinarios', VeterinarioController).apiOnly()
-router.post('/veterinarios/AdicionaAnimail', [VeterinarioController, 'AdicionaAnimal'])
-router.post('/veterinarios/AlteraAnimal/:animal_id', [VeterinarioController, 'AlteraAnimal'])
-router.post('/veterinarios/AdicionaRegistro/:veterinario_id', [VeterinarioController, 'AdicionaRegistro'])
+router.post('/veterinarios/adicionaAnimail', [VeterinarioController, 'adicionaAnimal'])
+router.post('/veterinarios/alteraAnimal/:animal_id/:pessoa_id', [VeterinarioController, 'alteraAnimal'])
+router.post('/veterinarios/adicionaRegistro/:veterinario_id/:pessoa_id', [VeterinarioController, 'adicionaRegistro'])
+router.delete('/veterinarios/deletaAnimal/:animal_id/:pessoa_id', [VeterinarioController,'deletaAnimal'])
+router.post('/veterinarios/modificaRegistro/:registro_id/:pessoa_id', [VeterinarioController,'modificaRegistro'])
+router.get('/veterinarios/mostraRegistros/:pessoa_id',[VeterinarioController, 'mostraRegistros'])
 
 //ROTA DO VOLUNTARIO
 router.resource('/voluntarios', VoluntarioController).apiOnly()
-router.post('/voluntarios/AdicionaAnimail', [VoluntarioController, 'AdicionaAnimal'])
-router.post('/voluntarios/AlteraAnimal/:animal_id', [VoluntarioController, 'AlteraAnimal'])
-router.post('/voluntarios/AdicionaRegistro/:voluntario_id', [VoluntarioController, 'AdicionaRegistro'])
+router.post('/voluntarios/adicionaAnimail', [VoluntarioController, 'adicionaAnimal'])
+router.post('/voluntarios/alteraAnimal/:animal_id/:pessoa_id', [VoluntarioController, 'alteraAnimal'])
+router.post('/voluntarios/adicionaRegistro/:voluntario_id/:pessoa_id', [VoluntarioController, 'adicionaRegistro'])
+router.delete('/voluntarios/deletaAnimal/:animal_id/:pessoa_id', [VoluntarioController,'deletaAnimal'])
 
 /**
  * TODO

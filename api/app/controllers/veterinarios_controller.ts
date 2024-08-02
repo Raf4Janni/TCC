@@ -3,6 +3,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 import Animal from '#models/animal'
+import Pessoa from '#models/pessoa'
 
 export default class VeterinariosController {
   async index({}: HttpContext) {
@@ -10,7 +11,11 @@ export default class VeterinariosController {
     return veterinario
   }
 
-  async AdicionaAnimal({ request }: HttpContext) {
+  async adicionaAnimal({ request, params }: HttpContext) {
+    const pessoa = await Pessoa.findOrFail(params.id)
+    if(pessoa.cargo != "adm" && pessoa.cargo != "vet" && pessoa.cargo != "vol"){
+      return "Você não possui acesso para realizar essa tarefa."
+    }
     const body = request.body()
 
     let animal = new Animal()
@@ -28,7 +33,11 @@ export default class VeterinariosController {
     await animal.save()
   }
 
-  async AdicionaRegistro({ request, params }: HttpContext) {
+  async adicionaRegistro({ request, params }: HttpContext) {
+    const pessoa = await Pessoa.findOrFail(params.id)
+    if(pessoa.cargo != "adm" && pessoa.cargo != "vet" && pessoa.cargo != "vol"){
+      return "Você não possui acesso para realizar essa tarefa."
+    }
     const body = request.body()
 
     let registro = new Registro()
@@ -45,7 +54,11 @@ export default class VeterinariosController {
     await registro.save()
   }
 
-  async AlteraAnimal({ request, params }: HttpContext) {
+  async alteraAnimal({ request, params }: HttpContext) {
+    const pessoa = await Pessoa.findOrFail(params.id)
+    if(pessoa.cargo != "adm" && pessoa.cargo != "vet" && pessoa.cargo != "vol"){
+      return "Você não possui acesso para realizar essa tarefa."
+    }
     const body = request.body()
 
     let animal = await Animal.findOrFail(params.animal_id)
@@ -63,7 +76,11 @@ export default class VeterinariosController {
     await animal.save()
   }
 
-  async DeletaAnimal({ params }: HttpContext) {
+  async deletaAnimal({ params }: HttpContext) {
+    const pessoa = await Pessoa.findOrFail(params.id)
+    if(pessoa.cargo != "adm" && pessoa.cargo != "vet" && pessoa.cargo != "vol"){
+      return "Você não possui acesso para realizar essa tarefa."
+    }
     const animal = await Animal.findOrFail(params.id)
 
     animal.deletadoEm = DateTime.now()
@@ -72,7 +89,11 @@ export default class VeterinariosController {
     return animal
   }
 
-  async ModificarRegistro({ request, params }: HttpContext) {
+  async modificaRegistro({ request, params }: HttpContext) {
+    const pessoa = await Pessoa.findOrFail(params.id)
+    if(pessoa.cargo != "adm" && pessoa.cargo != "vet"){
+      return "Você não possui acesso para realizar essa tarefa."
+    }
     const body = request.body()
 
     let registro = await Registro.findOrFail(params.id)
@@ -85,7 +106,11 @@ export default class VeterinariosController {
     await registro.save()
   }
 
-  async VerRegistro() {
+  async mostraRegistros({ params }: HttpContext) {
+    const pessoa = await Pessoa.findOrFail(params.id)
+    if(pessoa.cargo != "adm" && pessoa.cargo != "vet"){
+      return "Você não possui acesso para realizar essa tarefa."
+    }
     const registro = db.from('registros').select('*')
     return registro
   }
