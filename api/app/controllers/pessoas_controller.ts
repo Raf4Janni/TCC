@@ -6,6 +6,7 @@ import Cliente from '#models/cliente'
 import Veterinario from '#models/veterinario'
 import Administrador from '#models/administrador'
 import Funcionario from '#models/funcionario'
+import user_policy from '#policies/user_policy'
 
 /* TODO
   Organizar o select{
@@ -15,21 +16,14 @@ import Funcionario from '#models/funcionario'
 */
 
 export default class PessoasController {
-  async index() {
+
+  async todasPessoas(){
     const pessoas = await Pessoa.all()
 
     return pessoas
   }
 
-  async create({ request }: HttpContext) {
-    const body = request.body()
-  }
-
   async criar({ request, params }: HttpContext) {
-    const pessoa2 = await Pessoa.findOrFail(params.id)
-    if(pessoa2.cargo != "adm"){
-      return "Você não possui acesso para realizar essa tarefa."
-    }
     const body = request.body()
     let pessoa = new Pessoa()
     pessoa.nome = body.nome
@@ -41,8 +35,6 @@ export default class PessoasController {
     pessoa.sexo = body.sexo
     pessoa.cargo = params.perfil
     pessoa.criadoEm = DateTime.now()
-
-    await pessoa.save()
 
     let voluntario = new Voluntario()
     let cliente = new Cliente()
@@ -101,20 +93,18 @@ export default class PessoasController {
     return pessoa
   }
 
-  async atualizar({ request, params }: HttpContext) {
-    const pessoa2 = await Pessoa.findOrFail(params.id)
-    if(pessoa2.cargo != "adm"){
-      return "Você não possui acesso para realizar essa tarefa."
-    }
+  async atualizar({ request }: HttpContext) {
     const body = request.body()
     const pessoa = await Pessoa.findOrFail(body.id)
+    
+    if(!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
+    
     console.log(pessoa)
     pessoa.nome = body.nome
     pessoa.cpf = body.cpf
     pessoa.rg = body.rg
     pessoa.email = body.email
     pessoa.senha = body.senha
-    pessoa.cargo = body.cargo
     pessoa.data_nascimento = body.dataNascimento
     pessoa.sexo = body.sexo
 
@@ -135,26 +125,9 @@ export default class PessoasController {
 
   async destroy({ params }: HttpContext) {
     const pessoa = await Pessoa.findOrFail(params.id)
+    if(!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
     pessoa.deletadoEm = DateTime.now()
     pessoa.save()
-    return pessoa
-  }
-
-  async update({ params, request }: HttpContext) {
-    const body = request.body()
-    const pessoa = await Pessoa.findOrFail(params.id)
-
-    console.log(pessoa)
-    pessoa.nome = body.nome
-    pessoa.cpf = body.cpf
-    pessoa.rg = body.rg
-    pessoa.email = body.email
-    pessoa.senha = body.senha
-    pessoa.cargo = body.cargo
-    pessoa.data_nascimento = body.dataNascimento
-    pessoa.sexo = body.sexo
-
-    await pessoa.save()
     return pessoa
   }
 }

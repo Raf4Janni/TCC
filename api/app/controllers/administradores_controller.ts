@@ -3,7 +3,6 @@ import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 import Administrador from '#models/administrador'
-import Pessoa from '#models/pessoa'
 
 export default class AdministradoresController {
   async index() {
@@ -17,11 +16,7 @@ export default class AdministradoresController {
     return administrador
   }
 
-  async alteraSalario({ request, params }: HttpContext) {
-    const pessoa = await Pessoa.findOrFail(params.id)
-    if(pessoa.cargo != "adm"){
-      return "Você não possui acesso para realizar essa tarefa."
-    }
+  async AlteraSalario({ request }: HttpContext) {
     const body = request.body()
 
     const funcionario = (await Funcionario.query().where('id', body.funcionario_id))[0]
@@ -32,11 +27,7 @@ export default class AdministradoresController {
     funcionario.save()
   }
 
-  async demite({ request, params }: HttpContext) {
-    const pessoa = await Pessoa.findOrFail(params.id)
-    if(pessoa.cargo != "adm"){
-      return "Você não possui acesso para realizar essa tarefa."
-    }
+  async Demitir({ request }: HttpContext) {
     const body = request.body()
 
     const funcionario = (await Funcionario.query().where('id', body.funcionario_id))[0]

@@ -52,15 +52,16 @@ export default class Pessoa extends BaseModel {
     tokenSecretLength: 40,
   })
 
-  isAdministrator() {
-    return this.cargo === 'administrator'
+  static VerificaAdmin(pessoa: Pessoa){
+    if(pessoa.cargo == 'adm')
+      return true
+    return false 
+
   }
 
-  isVeterinarian() {
-    return this.cargo === 'veterinarian'
-  }
-
-  isVolunteer() {
-    return this.cargo === 'volunteer'
+  static VerificaFuncionario(pessoa: Pessoa){
+    if(pessoa.cargo == "vet" || pessoa.cargo == "vol") 
+      return true
+    return false
   }
 }

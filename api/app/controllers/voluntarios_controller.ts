@@ -1,9 +1,9 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
+import Voluntario from '#models/voluntario'
 import Animal from '#models/animal'
 import Registro from '#models/registro'
-import Pessoa from '#models/pessoa'
 
 export default class VoluntariosController {
   async index({}: HttpContext) {
@@ -12,11 +12,8 @@ export default class VoluntariosController {
     return voluntario
   }
 
-  async adicionaAnimal({ request, params }: HttpContext) {
-    const pessoa = await Pessoa.findOrFail(params.id)
-    if(pessoa.cargo != "adm" && pessoa.cargo != "vet" && pessoa.cargo != "vol"){
-      return "Você não possui acesso para realizar essa tarefa."
-    }
+  
+  async AdicionaAnimal({ request }: HttpContext) {
     const body = request.body()
 
     let animal = new Animal()
@@ -34,11 +31,7 @@ export default class VoluntariosController {
     await animal.save()
   }
 
-  async adicionaRegistro({ request, params }: HttpContext) {
-    const pessoa = await Pessoa.findOrFail(params.id)
-    if(pessoa.cargo != "adm" && pessoa.cargo != "vet" && pessoa.cargo != "vol"){
-      return "Você não possui acesso para realizar essa tarefa."
-    }
+  async AdicionaRegistro({ request, params }: HttpContext) {
     const body = request.body()
 
     let registro = new Registro()
@@ -55,11 +48,7 @@ export default class VoluntariosController {
     await registro.save()
   }
 
-  async alteraAnimal({ request, params }: HttpContext) {
-    const pessoa = await Pessoa.findOrFail(params.id)
-    if(pessoa.cargo != "adm" && pessoa.cargo != "vet" && pessoa.cargo != "vol"){
-      return "Você não possui acesso para realizar essa tarefa."
-    }
+  async AlteraAnimal({ request, params }: HttpContext) {
     const body = request.body()
 
     let animal = await Animal.findOrFail(params.animal_id)
@@ -76,20 +65,6 @@ export default class VoluntariosController {
 
     await animal.save()
   }
-
-  async deletaAnimal({ params }: HttpContext) {
-    const pessoa = await Pessoa.findOrFail(params.id)
-    if(pessoa.cargo != "adm" && pessoa.cargo != "vet" && pessoa.cargo != "vol"){
-      return "Você não possui acesso para realizar essa tarefa."
-    }
-    const animal = await Animal.findOrFail(params.id)
-
-    animal.deletadoEm = DateTime.now()
-    await animal.save()
-
-    return animal
-  }
-
   /*
 
   async store({ params }: HttpContext) {
@@ -100,7 +75,7 @@ export default class VoluntariosController {
 
     await voluntario.save()
   }
-
+    
   async show({ params }: HttpContext) {
     const voluntario = await Voluntario.findOrFail(params.id)
     return voluntario
