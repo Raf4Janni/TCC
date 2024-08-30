@@ -40,15 +40,27 @@ export default {
     async carregarDados() {
       try {
         const result = await get('animais');
-        
-        if (Array.isArray(result)) {
-          this.animais = result;
-        } else if (result && Array.isArray(result.animais)) {
-          this.animais = result.animais;
-        } else {
-          console.error('Formato inesperado dos dados:', result);
-        }
+        var teste = JSON.stringify(result);
 
+        //console.log(teste)
+        this.animais.push(teste);
+        this.animais.forEach((animal) => {
+        
+          const li = document.createElement('li');
+          const externaDiv = document.createElement('div');
+          const nomeDiv = document.createElement('div');
+          const idadeDiv = document.createElement('div');
+          const racaDiv = document.createElement('div');
+
+          externaDiv.appendChild(nomeDiv);
+          externaDiv.appendChild(idadeDiv);
+          externaDiv.appendChild(racaDiv);
+
+          li.appendChild(externaDiv);
+
+          nomeDiv.textContent = animal.nome;
+        });
+         
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }

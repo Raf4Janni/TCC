@@ -96,9 +96,9 @@ export default class PessoasController {
   async atualizar({ request }: HttpContext) {
     const body = request.body()
     const pessoa = await Pessoa.findOrFail(body.id)
-    
+
     if(!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
-    
+
     console.log(pessoa)
     pessoa.nome = body.nome
     pessoa.cpf = body.cpf
@@ -125,7 +125,7 @@ export default class PessoasController {
 
   async destroy({ params }: HttpContext) {
     const pessoa = await Pessoa.findOrFail(params.id)
-    if(!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
+    if (!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
     pessoa.deletadoEm = DateTime.now()
     pessoa.save()
     return pessoa
