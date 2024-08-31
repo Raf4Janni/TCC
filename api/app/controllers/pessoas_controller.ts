@@ -36,6 +36,8 @@ export default class PessoasController {
     pessoa.cargo = params.perfil
     pessoa.criadoEm = DateTime.now()
 
+    pessoa.save()
+
     let voluntario = new Voluntario()
     let cliente = new Cliente()
     let veterinario = new Veterinario()
@@ -97,7 +99,7 @@ export default class PessoasController {
     const body = request.body()
     const pessoa = await Pessoa.findOrFail(body.id)
 
-    if(!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
+    if (!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
 
     console.log(pessoa)
     pessoa.nome = body.nome
