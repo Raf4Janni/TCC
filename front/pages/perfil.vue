@@ -11,11 +11,11 @@
         </div>
         <div>
             <ul>
-                <li>Nome: aaaa</li>
-                <li>Data de Nascimento: aaaa</li>
-                <li>Email: aaaa</li>
-                <li>Senha: aaaa</li>
-                <li>CPF: aaaa</li>
+                <li>Nome: {{ pessoa.nome }}</li>
+                <li>Data de Nascimento: {{ pessoa.dataNascimento }}</li>
+                <li>Email: {{ pessoa.email }}</li>
+                <li>Senha: {{ pessoa.senha }}</li>
+                <li>CPF: {{ pessoa.cpf }}</li>
             </ul>
             <button><nuxt-link to="/editarperfil">Editar seus Dados</nuxt-link></button>  
         </div> 
@@ -26,3 +26,25 @@
 <style scoped>
 @import '/components/assets/sylelogin.css';
 </style>
+
+<script>
+import { get } from '../src/Api2';
+
+export default {
+  data() {
+    return {
+      pessoa: [], 
+    };
+  },
+  methods: {
+    async carregarDados() {
+      try {
+        const result = await get('pessoas/1')
+        this.pessoa = result
+      } catch (error) {
+        console.error('Erro ao carregar os dados:', error)
+      }
+    },
+  },
+}
+</script>

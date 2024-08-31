@@ -36,6 +36,8 @@ export default class PessoasController {
     pessoa.cargo = params.perfil
     pessoa.criadoEm = DateTime.now()
 
+    pessoa.save()
+    
     let voluntario = new Voluntario()
     let cliente = new Cliente()
     let veterinario = new Veterinario()
