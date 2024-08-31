@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="fade-in">
         <section>
         <div class="div2">
             <div>

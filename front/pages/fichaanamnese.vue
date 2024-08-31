@@ -1,9 +1,10 @@
 <template>
+<div class="fade-in">
     <header>
  <h1>Ficha de Anamnese</h1>
     </header>
     <section class="sectionficha">
-        <div class="div2">
+    <div class="div2">
             <div class="divficha">
                 <h2>Dados</h2>
                 <ul>
@@ -41,4 +42,5 @@
 
 
     </section>
+</div>
 </template>

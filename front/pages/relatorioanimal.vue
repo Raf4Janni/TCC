@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="fade-in">
         <header>
             <h1>Relatório Animal</h1>
         </header>

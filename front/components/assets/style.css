@@ -79,6 +79,18 @@ a:hover {
     text-decoration: none;
 }
 
+.btnlink{
+    color: #000;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.btnlink:hover{
+    text-decoration: none;
+    background-color: #eee;
+    color: #00da36;
+}
+
 footer {
     max-height: 100px;
     text-align: center;
@@ -156,24 +168,32 @@ footer p {
     }
     .linkdesktop {
         display: none;
+        animation: none;
     }
     
 }
 
 .infoperfil {
     text-align: left;
+    font-size: 120%;
 }
 
 button {
-    transition: color 0.3s ease, text-decoration 0.3s ease;
+    background-color: white;
+    padding: 10px 15px;
     border: none;
-    background-color: transparent;
-    color: #000;
-}
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border:#ddd solid 1px;
+    border-radius: 4px;   
+    margin: 5%;
+    }
 
 button:hover {
     text-decoration: none;
-    color: #00da36;
+    background-color: #a6f7ae;
 }
 
 .btnsidebar:hover{
@@ -190,7 +210,7 @@ button:hover {
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 100px;
     z-index: 1000;
 }
 
@@ -204,7 +224,7 @@ button:hover {
 }
 
 #menu a:hover {
-    color: #00da36;
+    color: #a6f7ae;
 }
 
 .closebtn {
@@ -244,6 +264,7 @@ button:hover {
 .divficha{
     margin: 2%;
     border: 1px solid #ddd;
+    text-align: left;
     }
 
 .div2{
@@ -252,3 +273,12 @@ button:hover {
     grid-template-rows:repeat(1, 1fr);
     align-items: center;
 }
+
+.button-container{
+    text-align: center;
+}
+
+.formcadastro {
+    width: 300px;
+    margin: 0 auto;
+  }

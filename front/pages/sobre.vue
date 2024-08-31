@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="fade-in">
         <header>
             <h1>Sobre a Empresa</h1>
         </header>
