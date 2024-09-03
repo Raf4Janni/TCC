@@ -18,7 +18,7 @@
                 <li>CPF: aaaa</li>
             </ul>
             <button><nuxt-link to="/editarperfil">Editar seus Dados</nuxt-link></button>  
-            <button @click = ˜carregarDados˜>Carregar Dados</button>
+            
         </div> 
     </section>
 </div>

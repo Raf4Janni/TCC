@@ -6,7 +6,6 @@ import Cliente from '#models/cliente'
 import Veterinario from '#models/veterinario'
 import Administrador from '#models/administrador'
 import Funcionario from '#models/funcionario'
-import user_policy from '#policies/user_policy'
 
 /* TODO
   Organizar o select{
@@ -16,8 +15,7 @@ import user_policy from '#policies/user_policy'
 */
 
 export default class PessoasController {
-
-  async todasPessoas(){
+  async todasPessoas() {
     const pessoas = await Pessoa.all()
 
     return pessoas
@@ -35,6 +33,8 @@ export default class PessoasController {
     pessoa.sexo = body.sexo
     pessoa.cargo = params.perfil
     pessoa.criadoEm = DateTime.now()
+
+    pessoa.save()
 
     let voluntario = new Voluntario()
     let cliente = new Cliente()
@@ -97,7 +97,7 @@ export default class PessoasController {
     const body = request.body()
     const pessoa = await Pessoa.findOrFail(body.id)
 
-    if(!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
+    if (!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
 
     console.log(pessoa)
     pessoa.nome = body.nome
