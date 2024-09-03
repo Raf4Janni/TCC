@@ -10,7 +10,7 @@ export default class AdministradoresController {
 
     return administradores
   }
-  
+
   async show({ params }: HttpContext) {
     const administrador = await Administrador.findOrFail(params.id)
     return administrador
