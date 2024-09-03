@@ -64,7 +64,6 @@
     </template>
     
     <style>
-    
   input[type="text"], input[type="password"], input[type="email"], input[type="date"] {
     width: 100%;
     padding: 10px;

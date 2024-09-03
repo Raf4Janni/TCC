@@ -1,11 +1,9 @@
 <template>
     <div class="fade-in">
-        <div class="container-titulo">
             <header>
             <h2>LOGIN</h2>
             </header>
-        </div>
-        <div class="container-form formcadastro">
+        <div class="formcadastro">
             <form action="">
 
 
@@ -33,10 +31,6 @@
         </div>
     </div>
 </template>
-
-<style scoped>
-@import '/components/assets/sylelogin.css';
-</style>
 
 <script setup lang="ts">
 definePageMeta({

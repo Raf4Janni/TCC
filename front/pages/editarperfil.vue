@@ -3,8 +3,7 @@
         <header>
             <h2>Editar Dados do Perfil</h2>
         </header>
-    <section>
-            <form action="">
+            <form action="" class=formcadastro>
 
                 <label for="">Nome</label>
                 <input type="text"
@@ -41,10 +40,6 @@
                         <button type="submit" class="button-enviar">Salvar</button>
                     </div>
             </form>
-    </section>
 </div>
 </template>
 
-<style scoped>
-@import '/components/assets/sylelogin.css';
-</style>

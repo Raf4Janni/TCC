@@ -1,55 +1,49 @@
-
 <template>
-<div class="fade-in">
+    <div class="fade-in">
         <header>
-        <h2>CADASTRO</h2>
+            <h2>Cadastro de Funcionário</h2>
         </header>
-    <div class="formcadastro">
-        <form action="">
-
-                <label for="">Nome</label>
+        <form action="" class="formcadastro">
+            <label for="">Nome</label>
+            
                 <input type="text"
                 name="" id=""
-                placeholder="Digite seu nome"
+                placeholder="Digite o nome"
                 required>
        
                 <label for="">Data de nascimento</label>
                 <input type="date"
                 name="" id=""
-                placeholder="Digite sua data de nascimento"
+                placeholder="Digite a data de nascimento"
                 required>
 
                 <label for="">CPF</label>
                 <input type="text"
                 name="" id=""
-                placeholder="Digite seu CPF"
+                placeholder="Digite o CPF"
                 required>
 
                 <label for="">E-mail</label>
                 <input type="email"
                 name="" id=""
-                placeholder="Digite seu e-mail"
+                placeholder="Digite o e-mail"
                 required>
 
                 <label for="">Senha</label>
                 <input type="password"
                 name="" id=""
-                placeholder="Digite sua senha"
+                placeholder="Digite a senha"
                 required>
-           
+
+                <label for="">Salário</label>
+                <input type="number"
+                name="" id=""
+                placeholder="Digite o salário"
+                required>
            
             <div class="button-container">
                 <button type="submit" class="button-enviar">Cadastrar</button>
             </div>
-        </form>
-        <p class="paragrafo">Já possui uma conta? </p>
-        <p class="cadastrar"><nuxt-link to="/login" class="linkheader">Faça seu Login</nuxt-link></p>
+            </form>
     </div>
-</div>
 </template>
-
-<script setup lang="ts">
-definePageMeta({
-  layout: "nolayout"
-})
-</script>
