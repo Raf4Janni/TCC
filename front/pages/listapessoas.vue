@@ -27,18 +27,21 @@ import { get } from '../src/Api2';
 export default {
     data() {
         return {
-            pessoa: [],
+            pessoas: [],
         };
     },
     methods: {
         async carregarDados() {
             try {
                 const result = await get('pessoas/todasPessoas')
-                this.pessoa = result
+                this.pessoas = result
             } catch (error) {
                 console.error('Erro ao carregar os dados:', error)
             }
         },
+    },
+    mounted() {
+        this.carregarDados();
     },
 } 
 </script>
