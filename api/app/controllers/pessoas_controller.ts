@@ -37,11 +37,7 @@ export default class PessoasController {
     pessoa.criadoEm = DateTime.now()
 
     pessoa.save()
-<<<<<<< HEAD
     
-=======
-
->>>>>>> 83e83b15cfb17909ec9722be31442334f9ba288f
     let voluntario = new Voluntario()
     let cliente = new Cliente()
     let veterinario = new Veterinario()
