@@ -1,11 +1,21 @@
 const url = 'http://localhost:3333/';
-export async function get(endponit, params) {
+export async function get(endponit) {
 
     console.log(endponit)
     const response = await fetch(url + endponit);
     const data = await response.json();
-    console.log(data);
     return data;
 }
 
-//export function teste;
+export async function teste(method, endponit, data) {
+
+    const response = await fetch(url + endponit, {
+
+        method: method,
+        body: JSON.stringify({ username: "example" }),
+        headers: {
+            'Content-Type': 'application/json',
+          },
+        body: data ? JSON.stringify(data) : null,
+      });
+};
