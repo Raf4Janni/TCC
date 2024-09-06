@@ -69,7 +69,8 @@ router.post('funcionarios/:pessoa_id/:clinica_id/:administrador_id', [Funcionari
 //ROTA DA PESSOA
 //router.resource('/pessoas', PessoasController).apiOnly()
 router.get('/pessoas/todasPessoas', [PessoasController, 'todasPessoas'])
-router.post('/pessoas/:perfil', [PessoasController, 'criar'])
+router.get('/pessoas/:pessoa_id', [PessoasController, 'show'])
+router.post('/pessoas/:cargo', [PessoasController, 'criar'])
 router.post('/login', [PessoasController, 'login'])
 router.put('/pessoas/atualizar', [PessoasController,'atualizar'] ).use(middleware.auth({guards: ['api'],}))
 

@@ -88,7 +88,7 @@ export default class PessoasController {
   }
 
   async show({ params }: HttpContext) {
-    const pessoa = await Pessoa.findOrFail(params.id)
+    const pessoa = await Pessoa.findOrFail(params.pessoa_id)
 
     return pessoa
   }
