@@ -7,15 +7,15 @@ export async function get(endponit) {
     return data;
 }
 
-export async function teste(method, endponit, data) {
+export async function teste(method, endponit, data, params) {
 
-    const response = await fetch(url + endponit, {
+    const response = await fetch(url + endponit +params, {
 
-        method: method,
-        body: JSON.stringify({ username: "example" }),
+        method: "POST",
         headers: {
             'Content-Type': 'application/json',
           },
         body: data ? JSON.stringify(data) : null,
       });
+
 };
