@@ -49,7 +49,7 @@
                     required>
 
                     <div class="button-container">
-                    <button type="submit" class="button-enviar">Cadastrar</button>
+                    <button type="submit" class="btnlink">Cadastrar</button>
                     </div>
                 </li>
                 
@@ -62,24 +62,3 @@
       </section>
     </div>
     </template>
-    
-    <style>
-  input[type="text"], input[type="password"], input[type="email"], input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    color: #000;
-    border-radius: 5px;
-    transition: border-color 0.3s, background-color 0.3s;
-
-  }
-
-  input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
-    background-color: #a6f7ae; 
-  }
-
-::placeholder{
-    color: #000;
-}
-</style>
