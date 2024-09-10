@@ -9,7 +9,7 @@ export async function get(endponit) {
 
 export async function teste(method, endponit, data, params) {
 
-    const response = await fetch(url + endponit +params, {
+    const response = await fetch(url + endponit, {
 
         method: "POST",
         headers: {
