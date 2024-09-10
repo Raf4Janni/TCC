@@ -40,6 +40,11 @@
                 name="" id=""
                 placeholder="Digite o salário"
                 required>
+
+                <label for="">Select</label>
+                <select disabled>
+                    <option value=""></option>
+                </select>
            
             <div class="button-container">
                 <button type="submit" class="button-enviar">Cadastrar</button>
