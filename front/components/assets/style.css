@@ -391,5 +391,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
       
       .imgsection {
         width: 100%; /* Ajuste conforme necessário */
+        max-width: 200px;
         height: auto; /* Mantém a proporção da imagem */
       }
