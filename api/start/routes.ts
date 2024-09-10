@@ -76,7 +76,8 @@ router.put('/pessoas/atualizar', [PessoasController,'atualizar'] ).use(middlewar
 
 //ROTAS DO REGISTRO
 router.resource('/registros', RegistroController).apiOnly()
-router.post('registros/:voluntario_id/:veterinario_id', [RegistroController, 'store'])
+router.post('registros/adiciona', [RegistroController, 'store'])
+router.get('registros/animal/:animal_id', [RegistroController, 'RegistrosAnimal'])
 
 //ROTAS DO TELEFONE
 router.resource('/telefones', TelefonesController).apiOnly()

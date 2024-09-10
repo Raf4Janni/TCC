@@ -4,8 +4,8 @@
       <h1>Informações do Animal</h1>
     </header>
     <!-- Verifica se o objeto `animal` foi carregado antes de renderizar o conteúdo -->
-    <section class="sectionficha" v-if="animal">
-      <div class="divficha">
+    <section class="sectionficha" >
+      <div class="divficha" v-if="animal">
         <h2>Dados do Animal</h2>
         <ul>
           <li>
@@ -16,21 +16,22 @@
           </li>
         </ul>
       </div>
+      <p v-else>Carregando informações do animal...</p>
 
-      <div class="divficha">
+      <div class="divficha"  v-for="registro in registros" :key="registro.id" >
         <h2>Ficha de Anamnese - Histórico Clínico</h2>
         <ul>
           <li>
-            <p>Peso: </p>
-            <p>Doença: </p>
-            <p>Informações: </p>
+            <p>Autor: {{registro.autor}}</p>
+            <p>Tipo Registro: {{registro.tipo_registro}}</p>
+            <p>informacoes: {{registro.informacoes}}</p>
           </li>
         </ul>
       </div>
     </section>
 
     <!-- Exibe uma mensagem enquanto os dados estão sendo carregados -->
-    <p v-else>Carregando informações do animal...</p>
+    
   </div>
 </template>
 
@@ -40,7 +41,8 @@ import { get } from '../../src/Api2';
 export default {
   data() {
     return {
-      animal: null, // Objeto para armazenar os dados do animal
+      animal: null,
+      registros: [], // Objeto para armazenar os dados do animal
     };
   },
   methods: {
@@ -52,6 +54,10 @@ export default {
         const result = await get(`animais/${id}`); 
 
         this.animal = result; 
+
+        const result2 = await get(`registros/animal/${id}`);
+        
+        this.registros = result2;
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }
