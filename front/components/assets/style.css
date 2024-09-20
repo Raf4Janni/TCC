@@ -173,6 +173,7 @@ footer p {
     
 }
 
+
 .infoperfil {
     text-align: left;
     font-size: 120%;
@@ -196,9 +197,22 @@ button:hover {
     background-color: #a6f7ae;
 }
 
+.btnsidebar{
+    background-color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border:#ddd solid 1px;
+    border-radius: 4px;   
+    margin: 5%;
+}
+
 .btnsidebar:hover{
     text-decoration: none;
-    color: #fff;
+    animation: none;
 }
 
 #menu {
@@ -267,12 +281,24 @@ button:hover {
     text-align: left;
     }
 
-.div2{
-    display: grid;
-    grid-template-columns:repeat(2, 2fr);
-    grid-template-rows:repeat(1, 1fr);
-    align-items: center;
+@media screen and (max-width: 800px) {
+    .div2{
+        display: grid;
+        grid-template-columns:repeat(1, 1fr);
+        grid-template-rows:repeat(2, 1fr);
+        align-items: center;
+    }
 }
+
+@media screen and (min-width: 800px) {
+    .div2{
+        display: grid;
+        grid-template-columns:repeat(2, 1fr);
+        grid-template-rows:repeat(1, 1fr);
+        align-items: center;
+    }
+}
+
 
 .button-container{
     text-align: center;
