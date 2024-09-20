@@ -72,7 +72,11 @@ router.get('/pessoas/todasPessoas', [PessoasController, 'todasPessoas'])
 router.get('/pessoas/:pessoa_id', [PessoasController, 'show'])
 router.post('/pessoas/:cargo', [PessoasController, 'criar'])
 router.post('/login', [PessoasController, 'login'])
+<<<<<<< Updated upstream
 router.put('/pessoas/atualizar', [PessoasController,'atualizar'])
+=======
+router.put('/pessoas/atualizar', [PessoasController,'atualizar'] ).use(middleware.auth({guards: ['api'],})) 
+>>>>>>> Stashed changes
 
 //ROTAS DO REGISTRO
 router.resource('/registros', RegistroController).apiOnly()

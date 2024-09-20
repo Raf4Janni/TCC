@@ -46,42 +46,46 @@
             </div>
         </form>
         <p class="paragrafo">Já possui uma conta? </p>
-        <p class="cadastrar"><nuxt-link to="/login" class="linkheader">Faça seu Login</nuxt-link></p>
+        <p class="cadastrar">
+          <nuxt-link to="/login" class="linkheader">Faça seu Login</nuxt-link>
+        </p>
+      </div>
     </div>
-</div>
-</template>
-
-<script>
-import { teste } from '../src/Api2';
-
-export default {
+  </template>
+  
+  <script>
+  import { teste } from '../src/Api2';
+  
+  export default {
     name: "cadastropage",
     methods: {
-        carregarDados: async () => {
-            console.log("adsasda")
-            try {
-                const nome = document.getElementById('nome').value;
-                const dataNascimento = document.getElementById('dataNascimento').value;
-                const cpf = document.getElementById('cpf').value;
-                const email = document.getElementById('email').value;
-                const senha = document.getElementById('senha').value;
-
-                const data = {
-                    nome: nome,
-                    dataNascimento: dataNascimento,
-                    cpf: cpf,
-                    email: email,
-                    senha: senha
-                }
-                await teste('teste','pessoas/func', data,'1312');
-            } catch (error) {
-                console.error('Erro ao carregar os dados:', error);
-            }
-
+      carregarDados: async function () {
+        try {
+          const nome = document.getElementById('nome').value;
+          const dataNascimento = document.getElementById('dataNascimento').value;
+          const cpf = document.getElementById('cpf').value;
+          const rg = document.getElementById('rg').value;
+          const email = document.getElementById('email').value;
+          const senha = document.getElementById('senha').value;
+          const sexo = document.getElementById('sexo').value; 
+  
+          const data = {
+            nome: nome,
+            dataNascimento: dataNascimento,
+            cpf: cpf,
+            rg: rg,
+            email: email,
+            sexo: sexo,
+            senha: senha
+          };
+  
+          await teste('teste', 'pessoas/func', data, '1312');
+          console.log("Dados enviados com sucesso:", data);
+        } catch (error) {
+          console.error('Erro ao carregar os dados:', error);
         }
-
-
+      }
     }
-}
-
-</script>
+  };
+  </script>
+  
