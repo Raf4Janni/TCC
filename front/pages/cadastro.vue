@@ -30,11 +30,15 @@
                 placeholder="Digite seu RG"
                 required>
 
-                <label for="">Sexo</label>
-                <select>
-                    <option value="m">Masculino</option>
-                    <option value="f">Feminino</option>
-                </select>
+                <fieldset>
+            <legend>Sexo</legend>
+            <label>
+                <input type="radio" name="sexo" value="M"> Masculino
+            </label><br>
+            <label>
+                <input type="radio" name="sexo" value="F"> Feminino
+            </label><br>
+                </fieldset><br>
            
            
             <div class="button-container">

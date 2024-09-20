@@ -9,13 +9,17 @@
                 <input type="text"
                 name="" id=""
                 placeholder="Digite o nome"
-                required>
+                required><br>
 
-            <label for="">Sexo</label>
-                <input type="text"
-                name="" id=""
-                placeholder="Digite o sexo"
-                required>
+                <fieldset>
+            <legend>Sexo</legend>
+            <label>
+                <input type="radio" name="sexo" value="M"> Masculino
+            </label><br>
+            <label>
+                <input type="radio" name="sexo" value="F"> Feminino
+            </label><br>
+                </fieldset><br>
 
             <label for="">Data de resgate</label>
                 <input type="date"
@@ -23,11 +27,15 @@
                 placeholder="Digite a data de resgate"
                 required>
 
-            <label for="">Espécie</label>
-                <input type="text"
-                name="" id=""
-                placeholder="Digite a espécie"
-                required>
+                <label for="">Espécie</label>
+                <select disabled>
+                    <option value=""></option>
+                </select>
+        
+            <label for="">Raça</label>
+                <select disabled>
+                    <option value=""></option>
+                </select>
        
                 <label for="">Data de nascimento</label>
                 <input type="date"
@@ -53,11 +61,7 @@
                 placeholder="Digite o estado de saúde"
                 required>
 
-                <label for="">Raça</label>
-                <input type="text"
-                name="" id=""
-                placeholder="Digite a raça"
-                required>
+                
 
             <div class="button-container">
                 <button type="submit" class="button-enviar">Cadastrar</button>

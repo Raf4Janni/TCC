@@ -41,7 +41,7 @@
                 placeholder="Digite o salário"
                 required>
 
-                <label for="">Select</label>
+                <label for="">select</label>
                 <select disabled>
                     <option value=""></option>
                 </select>
