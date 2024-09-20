@@ -11,7 +11,7 @@ export async function teste(method, endponit, data, params) {
 
     const response = await fetch(url + endponit, {
 
-        method: "POST",
+        method: method,
         headers: {
             'Content-Type': 'application/json',
           },
