@@ -36,6 +36,7 @@ router.get('/', async () => {
 
 //ROTAS DO ADMINISTRADOR
 router.resource('/administradores', AdministradoresController).apiOnly()
+router.post('/administradores/AdicionaFuncionario', [AdministradoresController, 'AdicionaFuncionario'])
 router.post('/administradores/AlterarSalario', [AdministradoresController, 'AlteraSalario'])
 router.post('administradores/Demitir', [AdministradoresController, 'Demitir'])
 //router.post('/administradores/:pessoa_id/:clinica_id/teste', [AdministradoresController, 'store'])
@@ -72,11 +73,7 @@ router.get('/pessoas/todasPessoas', [PessoasController, 'todasPessoas'])
 router.get('/pessoas/:pessoa_id', [PessoasController, 'show'])
 router.post('/pessoas/:cargo', [PessoasController, 'criar'])
 router.post('/login', [PessoasController, 'login'])
-<<<<<<< Updated upstream
-router.put('/pessoas/atualizar', [PessoasController,'atualizar'])
-=======
-router.put('/pessoas/atualizar', [PessoasController,'atualizar'] ).use(middleware.auth({guards: ['api'],})) 
->>>>>>> Stashed changes
+router.put('/pessoas/atualizar', [PessoasController, 'atualizar'])
 
 //ROTAS DO REGISTRO
 router.resource('/registros', RegistroController).apiOnly()

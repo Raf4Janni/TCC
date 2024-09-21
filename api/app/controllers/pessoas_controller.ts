@@ -31,60 +31,10 @@ export default class PessoasController {
     pessoa.senha = body.senha
     pessoa.data_nascimento = body.dataNascimento
     pessoa.sexo = body.sexo
-    pessoa.cargo = params.perfil
+    pessoa.cargo = 'cliente'
     pessoa.criadoEm = DateTime.now()
 
     pessoa.save()
-
-    let voluntario = new Voluntario()
-    let cliente = new Cliente()
-    let veterinario = new Veterinario()
-    let administrador = new Administrador()
-    let funcionario = new Funcionario()
-
-    switch (params.perfil) {
-      case 'adm':
-        administrador.pessoa_id = pessoa.id
-        administrador.clinica_id = body.clinica_id
-        administrador.criadoEm = DateTime.now()
-
-        await administrador.save()
-
-        break
-      case 'func':
-        funcionario.pessoa_id = pessoa.id
-        funcionario.clinica_id = body.clinica_id
-        funcionario.administrador_id = body.administrador_id
-        funcionario.salario = body.salario
-        funcionario.criadoEm = DateTime.now()
-
-        await funcionario.save()
-
-        break
-      case 'vet':
-        veterinario.funcionario_id = body.funcionario_id
-        veterinario.crmv = body.crmv
-        veterinario.criadoEm = DateTime.now()
-
-        await veterinario.save()
-
-        break
-      case 'vol':
-        voluntario.funcionario_id = body.funcionario_id
-        voluntario.criadoEm = DateTime.now()
-
-        await voluntario.save()
-
-        break
-      case 'cli':
-        cliente.pessoa_id = pessoa.id
-        cliente.clinica_id = body.clinica_id
-        cliente.criadoEm = DateTime.now()
-
-        await cliente.save()
-
-        break
-    }
   }
 
   async show({ params }: HttpContext) {
