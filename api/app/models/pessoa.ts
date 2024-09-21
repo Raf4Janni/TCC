@@ -38,6 +38,7 @@ export default class Pessoa extends BaseModel {
 
   @column()
   declare cargo: string
+
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 
@@ -55,12 +56,12 @@ export default class Pessoa extends BaseModel {
   static VerificaAdmin(pessoa: Pessoa){
     if(pessoa.cargo == 'adm')
       return true
-    return false 
+    return false
 
   }
 
   static VerificaFuncionario(pessoa: Pessoa){
-    if(pessoa.cargo == "vet" || pessoa.cargo == "vol") 
+    if(pessoa.cargo == "vet" || pessoa.cargo == "vol")
       return true
     return false
   }

@@ -3,6 +3,7 @@ import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 import Administrador from '#models/administrador'
+import Pessoa from '#models/pessoa'
 
 export default class AdministradoresController {
   async index() {
@@ -25,6 +26,24 @@ export default class AdministradoresController {
     funcionario.salario = salarioNovo
 
     funcionario.save()
+  }
+
+  async AdicionaFuncionario({ request }: HttpContext) {
+    const body = request.body()
+
+    const funcionario = new Funcionario()
+    funcionario.pessoa_id = body.pessoa_id
+    funcionario.clinica_id = body.clinica_id
+    funcionario.administrador_id = body.administrador_id
+    funcionario.salario = body.salario
+    funcionario.criadoEm = DateTime.now()
+
+    funcionario.save()
+    const pessoa = await Pessoa.findOrFail(body.pessoa_id)
+    pessoa.cargo = 'funcionario'
+    pessoa.save()
+
+    await funcionario.save()
   }
 
   async Demitir({ request }: HttpContext) {
