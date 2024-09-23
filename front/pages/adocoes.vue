@@ -6,6 +6,12 @@
     <section>
 
       <ul class="pAdocoes">
+        <div class="filtro">
+          <select>
+            <label>Filtro de Pesquisa</label>
+                    <option value=""></option>
+          </select>
+        </div>
         <li v-for="animal in animais" :key="animal.id" class="div2">
           <div>
             <div class="name">Nome: {{ animal.nome }}</div>

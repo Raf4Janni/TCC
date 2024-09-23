@@ -51,6 +51,10 @@ p {
     text-align: left;
 }
 
+.filtro{    
+max-width: 300px;
+}
+
 ul {
     list-style: none;
     padding: 20px;
