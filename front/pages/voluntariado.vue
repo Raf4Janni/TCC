@@ -20,31 +20,31 @@
                 <li>
                     <label for="">Nome: </label>
                     <input type="text"
-                    name="" id=""
+                    name="" id="nome"
                     placeholder="Digite seu nome"
                     required>
            
                     <label for="">Data de nascimento: </label>
                     <input type="date"
-                    name="" id=""
+                    name="" id="dataNascimento"
                     placeholder="Digite sua data de nascimento"
                     required>
     
                     <label for="">CPF: </label>
                     <input type="text"
-                    name="" id=""
+                    name="" id="cpf"
                     placeholder="Digite seu CPF"
                     required>
     
                     <label for="">E-mail: </label>
                     <input type="email"
-                    name="" id=""
+                    name="" id="email"
                     placeholder="Digite seu e-mail"
                     required>
     
                     <label for="">Senha: </label>
                     <input type="password"
-                    name="" id=""
+                    name="" id="senha"
                     placeholder="Digite sua senha"
                     required>
 
@@ -61,4 +61,40 @@
           </div>
       </section>
     </div>
-    </template>
+</template>
+<script>
+  import { teste } from '../src/Api2';
+  
+  export default {
+    name: "cadastropage",
+    methods: {
+      carregarDados: async function () {
+        try {
+          const nome = document.getElementById('nome').value;
+          const dataNascimento = document.getElementById('dataNascimento').value;
+          const cpf = document.getElementById('cpf').value;
+          const rg = document.getElementById('rg').value;
+          const email = document.getElementById('email').value;
+          const senha = document.getElementById('senha').value;
+          const sexo = document.getElementById('sexo').value; 
+  
+          const data = {
+            nome: nome,
+            dataNascimento: dataNascimento,
+            cpf: cpf,
+            rg: rg,
+            email: email,
+            sexo: sexo,
+            senha: senha
+          };
+  
+          await teste('teste', 'pessoas/func', data, '1312');
+          console.log("Dados enviados com sucesso:", data);
+        } catch (error) {
+          console.error('Erro ao carregar os dados:', error);
+        }
+      }
+    }
+  };
+  </script>
+  
