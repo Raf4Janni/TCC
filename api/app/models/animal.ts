@@ -1,8 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
+import type { HasOne } from '@adonisjs/lucid/types/relations'
+import Especie from './especie.js'
+import Raca from './raca.js'
 
 export default class Animal extends BaseModel {
-
   public static table = 'animais';
 
   @column({ isPrimary: true })
@@ -17,9 +19,6 @@ export default class Animal extends BaseModel {
   @column.dateTime()
   declare dataResgate: DateTime
 
-  @column()
-  declare especie: string
-
   @column.dateTime()
   declare dataNascimento: DateTime
 
@@ -32,8 +31,11 @@ export default class Animal extends BaseModel {
   @column()
   declare estadoSaude: string
 
-  @column()
-  declare raca: string
+  @hasOne(() => Especie)
+  declare especie: HasOne<typeof Especie>
+
+  @hasOne(() => Raca)
+  declare raca: HasOne<typeof Raca>
 
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime

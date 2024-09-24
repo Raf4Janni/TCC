@@ -78,7 +78,7 @@ export default {
         const dadosFuncionario = {
           pessoa_id: this.pessoaSelecionada,
           salario: this.form.salario,
-          administrador_id: 2, // Supondo que o administrador logado tenha ID 2
+          administrador_id: 1, // Supondo que o administrador logado tenha ID 2
           clinica_id: 1
         };
 
