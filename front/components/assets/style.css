@@ -202,6 +202,7 @@ button:hover {
 }
 
 .btnsidebar{
+    position: fixed;
     background-color: white;
     padding: 10px 15px;
     border: none;
@@ -212,6 +213,7 @@ button:hover {
     border:#ddd solid 1px;
     border-radius: 4px;   
     margin: 5%;
+    
 }
 
 .btnsidebar:hover{
@@ -222,11 +224,11 @@ button:hover {
 #menu {
     height: 100%;
     width: 0;
-    position: fixed;
+    position:fixed;
     top: 0;
     right: 0;
     background-color: #111;
-    overflow-x: hidden;
+    overflow-x:visible;
     transition: 0.5s;
     padding-top: 100px;
     z-index: 1000;
