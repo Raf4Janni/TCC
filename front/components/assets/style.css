@@ -287,6 +287,25 @@ button:hover {
     text-align: left;
     }
 
+.tabelaadocoes{
+    width:100%;
+    border-collapse: collapse;
+}
+.tabela-historico th, .tabela-historico td {
+    border: 1px solid #b4b4b4 ;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabela-historico th {
+    background-color: #00da36;
+    color: black;
+}
+
+.tabela-historico tr:hover {
+    background-color: #ddd;
+}
+
 @media screen and (max-width: 800px) {
     .div2{
         display: grid;
