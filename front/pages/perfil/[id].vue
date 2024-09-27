@@ -43,6 +43,10 @@ export default {
                 const result = await get(`pessoas/${id}`)
 
                 this.pessoa = result
+
+                const date = new Date(this.pessoa.dataNascimento)
+                this.pessoa.dataNascimento = date.toISOString().split('T')[0]
+                
             } catch (error) {
                 console.error('Erro ao carregar os dados:', error)
             }

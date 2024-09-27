@@ -14,40 +14,43 @@
             Sua ajuda é essencial para a nossa causa e pode fazer uma grande diferença. Junte-se a nós e ajude a criar um mundo 
             mais gentil para nossos amigos de quatro patas!    
         </ul>
-            <form action="" class="infoperfil">
+            <form action="" class="infoperfil" @submit.prevent="carregarDados">
                 <ul>
                   <h2>Formulário</h2>
                 <li>
-                    <label for="">Nome: </label>
-                    <input type="text"
-                    name="" id="nome"
-                    placeholder="Digite seu nome"
-                    required>
-           
-                    <label for="">Data de nascimento: </label>
-                    <input type="date"
-                    name="" id="dataNascimento"
-                    placeholder="Digite sua data de nascimento"
-                    required>
-    
-                    <label for="">CPF: </label>
-                    <input type="text"
-                    name="" id="cpf"
-                    placeholder="Digite seu CPF"
-                    required>
-    
-                    <label for="">E-mail: </label>
-                    <input type="email"
-                    name="" id="email"
-                    placeholder="Digite seu e-mail"
-                    required>
-    
-                    <label for="">Senha: </label>
-                    <input type="password"
-                    name="" id="senha"
-                    placeholder="Digite sua senha"
-                    required>
+                  <label for="">Nome</label>
+                <input type="text" name="" id="nome" placeholder="Digite seu nome" required>
 
+                <label for="">Data de nascimento</label>
+                <input type="date" name="" id="dataNascimento" placeholder="Digite sua data de nascimento" required>
+
+                <label for="">CPF</label>
+                <input type="text" name="" id="cpf" placeholder="Digite seu CPF" required>
+
+                <label for="">E-mail</label>
+                <input type="email" name="" id="email" placeholder="Digite seu e-mail" required>
+
+                <label for="">Senha</label>
+                <input type="password"
+                name="" id=""
+                placeholder="Digite sua senha"
+                required>
+
+                <label for="">RG</label>
+                <input type="text"
+                name="" id=""
+                placeholder="Digite seu RG"
+                required>
+
+                <fieldset>
+            <legend>Sexo</legend>
+            <label>
+                <input type="radio" name="sexo" value="M" > Masculino
+            </label><br>
+            <label>
+                <input type="radio" name="sexo" value="F"> Feminino
+            </label><br>
+                </fieldset><br>
                     <div class="button-container">
                     <button type="submit" class="btnlink">Cadastrar</button>
                     </div>
