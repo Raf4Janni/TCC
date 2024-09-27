@@ -47,8 +47,6 @@ export default class PessoasController {
     const body = request.body()
     const pessoa = await Pessoa.findOrFail(body.id)
 
-    if (!Pessoa.VerificaAdmin(pessoa)) return console.log('não passou')
-
     console.log(pessoa)
     pessoa.nome = body.nome
     pessoa.cpf = body.cpf
