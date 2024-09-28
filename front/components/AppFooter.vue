@@ -17,7 +17,7 @@
             </div>
             <div class="footer-section">
                 <h3>Equipe TechPaws:</h3>
-                <p>Davi Francisco de Faria &nbsp;&nbsp; João Pedro Jacob &nbsp;&nbsp; Livia Emidio</p>
+                <p>Davi Francisco de Faria &nbsp;&nbsp; João Vitor Jacob &nbsp;&nbsp; Livia Emidio</p>
                 <p>Matheus Naoki Nebo &nbsp;&nbsp; Pedro Bighetti </p>
                 <p>Rafael Said &nbsp;&nbsp; Vitor Hugo Guilhoto </p>
 
