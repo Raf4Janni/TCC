@@ -47,6 +47,7 @@ router.post('/adocoes/:cliente_id/:animal_id/teste', [AdocoesController, 'store'
 
 //ROTA DO ANIMAL
 router.resource('/animais', AnimaisController).apiOnly()
+router.get('/animais/especies', [AnimaisController, 'getTodasEspecies'])
 
 //ROTAS DO CLIENTE
 router.resource('/clientes', ClientesController).apiOnly()

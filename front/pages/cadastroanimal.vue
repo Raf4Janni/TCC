@@ -27,15 +27,15 @@
                 placeholder="Digite a data de resgate"
                 required>
 
-                <label for="">Espécie</label>
-                <select disabled>
-                    <option value=""></option>
+            <label for="especie">Espécie</label>
+                <select id="especies" onchange="carregarRacas">
+                <option value="">Selecione uma espécie</option>
                 </select>
-        
-            <label for="">Raça</label>
-                <select disabled>
-                    <option value=""></option>
-                </select>
+
+            <label for="raca">Raça</label>
+              <select id="racas" disabled>
+                  <option value="">Selecione uma raça</option>
+              </select>
        
                 <label for="">Data de nascimento</label>
                 <input type="date"
@@ -74,13 +74,26 @@ import { teste } from '../src/Api2';
   export default {
     name: "cadastroanimalpage",
     methods: {
+      carregarEspecies: async function () {
+        try {
+          const especies = await get('animais/especies');
+          especies.forEach(e => {
+            const option = document.createElement('option');
+            option.value = e.id;
+            option.innerText = e.nome;
+            document.getElementById('especies').appendChild(option);
+          });
+        } catch (error) {
+          console.error('Erro ao carregar as espécies:', error);
+        }
+      },
+
       carregarDados: async function () {
         try {
           const nome = document.getElementById('nome').value;
           const sexo = document.getElementById('dataNascimento').value;
           const dataResgate = document.getElementById('dataResgate').value;
-          const especie = document.getElementById('especie').value;
-          const raca = document.getElementById('raca').value;
+          const especie = document.getElementById('especies').value;
           const dataNascimento = document.getElementById('dataNascimento').value;
           const cor = document.getElementById('cor').value;
           const localResgate = document.getElementById('localResgate').value;
@@ -91,19 +104,40 @@ import { teste } from '../src/Api2';
             sexo: sexo,
             dataResgate: dataResgate,
             especie: especie,
-            raca: raca,
             dataNascimento: dataNascimento,
             cor: cor,
             localResgate: localResgate,
             estadoSaude: estadoSaude
           };
   
-          await teste('teste', 'animal', data, '1312');
+          await teste("POST", 'animal', data, '1312');
           console.log("Dados enviados com sucesso:", data);
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);
         }
-      }
-    }
+      },
+      carregarRacas: async function () {
+        try {
+          const especie = document.getElementById('especie').value;
+          const raca = document.getElementById('raca');
+          raca.innerHTML = '<option value="">Selecione uma raça</option>';
+          response.forEach(r => {
+            if (r.especie === especie) {
+              const option = document.createElement('option');
+              option.value = r.id;
+              option.innerText = r.nome;
+              raca.appendChild(option);
+            }
+          });
+          raca.disabled = false;
+        } catch (error) {
+          console.error('Erro ao carregar as raças:', error);
+        }
+
+      },
+    },
+    mounted() {
+        this.carregarEspecies();
+    },
   };
 </script>
