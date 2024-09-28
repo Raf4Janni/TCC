@@ -1,11 +1,11 @@
 <template>
     <div id="nav">
       <img class="icone_logo" src="/components/assets/img/TechPaws1.png" />
-      <nuxt-link to="/" class="linkheader">Home</nuxt-link>
-      <nuxt-link to="/sobre" class="linkheader">Sobre</nuxt-link>
-      <nuxt-link to="/adocoes" class="linkheader">Adoções</nuxt-link>
-      <nuxt-link to="/doacoes" class="linkheader">Doações</nuxt-link>
-      <nuxt-link to="/voluntariado" class="linkheader">Voluntariado</nuxt-link>
+      <nuxt-link to="/" class="linkheader"><h4>Home</h4></nuxt-link>
+      <nuxt-link to="/sobre" class="linkheader"><h4>Sobre</h4></nuxt-link>
+      <nuxt-link to="/adocoes" class="linkheader"><h4>Adoções</h4></nuxt-link>
+      <nuxt-link to="/doacoes" class="linkheader"><h4>Doações</h4></nuxt-link>
+      <nuxt-link to="/voluntariado" class="linkheader"><h4>Voluntariado</h4></nuxt-link>
       <nuxt-link to="/perfil" class="linkheader">
         <img class="icone_user" src="/components/assets/img/perfil.svg" />
       </nuxt-link>

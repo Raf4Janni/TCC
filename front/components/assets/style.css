@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +6,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #fff;
@@ -96,16 +97,27 @@ a:hover {
 }
 
 footer {
-    max-height: 100px;
-    text-align: center;
+    display: flex;
+    justify-content: center; /* Centraliza as seções no footer */
+    align-items: flex-start;
+    flex-wrap: wrap; /* Permite que as seções se movam para uma nova linha em telas menores */
+    max-height: 200px; /* Aumentei para acomodar o conteúdo */
+    text-align: center; /* Centraliza o texto nas seções */
     margin-top: 20px;
-    padding-top: 20px;
+    padding: 20px;
     border-top: 1px solid #ddd;
+}
+
+.footer-section {
+    flex: 1; /* Faz as seções ocuparem o mesmo espaço */
+    margin: 0 10px; /* Espaçamento entre as seções */
 }
 
 footer p {
     color: #000;
+    margin: 5px 0; /* Margem entre os parágrafos */
 }
+
 
 #nav {
     display: grid;
