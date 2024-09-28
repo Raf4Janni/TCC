@@ -41,7 +41,7 @@
                 required>
 
                     <div class="button-container">
-                        <button type="submit" class="button-enviar" @click="editarDados()"><nuxt-link :to="`/perfil/${pessoa.id}`">Salvar</nuxt-link></button>
+                        <button type="submit" class="button-enviar">Salvar</button>
                     </div>
             </form>
             <p v-else>Carregando informações do perfil...</p>
@@ -76,10 +76,9 @@ export default {
         },
         async editarDados() {
             try {
-                const route = useRoute()
-                const id = route.params.id
 
                 await teste("PUT","pessoas/atualizar", this.pessoa, this.pessoa.id)
+                this.$router.push(`/perfil/${this.pessoa.id}`)
 
             } catch (error) {
                 console.error('Erro a editar os dados:', error)
