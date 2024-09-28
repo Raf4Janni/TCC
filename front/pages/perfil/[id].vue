@@ -12,7 +12,7 @@
         <div>
             <ul>
                 <li>Nome: {{pessoa.nome}}</li>
-                <li>Data de Nascimento: {{pessoa.dataNascimento}}</li>
+                <li>Data de Nascimento: {{formatarData(pessoa.dataNascimento)}}</li>
                 <li>Email: {{pessoa.email}}</li>
                 <li>Senha: {{pessoa.senha}}</li>
                 <li>CPF: {{pessoa.cpf}}</li>
@@ -47,9 +47,14 @@ export default {
                 const date = new Date(this.pessoa.dataNascimento)
                 this.pessoa.dataNascimento = date.toISOString().split('T')[0]
                 
+                
             } catch (error) {
                 console.error('Erro ao carregar os dados:', error)
             }
+        },
+        formatarData(dataString) {
+            const partes = dataString.split('-');
+            return `${partes[2]}/${partes[1]}/${partes[0]}`;
         },
     },
     mounted() {
