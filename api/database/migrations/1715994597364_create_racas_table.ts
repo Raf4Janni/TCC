@@ -8,8 +8,8 @@ export default class extends BaseSchema {
       table.increments('id')
       table.string('nome').notNullable()
       table.integer('especie_id').unsigned().references('especies.id').onDelete('CASCADE')
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('criado_em')
+      table.timestamp('deletado_em')
     })
   }
 

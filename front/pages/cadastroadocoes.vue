@@ -4,62 +4,66 @@
             <h2>CADASTRO DE ADOÇÃO</h2>
         </header>
         <div class="formcadastro">
-            <form>
+            <form @submit.prevent="salvaAnimalOuPessoa" class="formcadastro">
 
-                <label for="">Nome</label>
-                <input type="text" name="" id="nome" placeholder="Digite o nome do adotante" required>
-
-                <label for="">Data de nascimento</label>
-                <input type="date" name="" id="dataNascimento" placeholder="Digite a data de nascimento" required>
-
-                <label for="">CPF</label>
-                <input type="text" name="" id="cpf" placeholder="Digite o CPF" required>
-
-                <label for="">E-mail</label>
-                <input type="email" name="" id="email" placeholder="Digite o e-mail" required>
-
-                <label for="">RG</label>
-                <input type="text" name="" id="rg" placeholder="Digite o RG" required>
-
-                <fieldset>
-            <legend>Sexo</legend>
-            <label>
-                <input type="radio" name="sexo" value="M"> Masculino
-            </label><br>
-            <label>
-                <input type="radio" name="sexo" value="F"> Feminino
-            </label><br>
-                </fieldset><br>
-
-                <label for="">Nome</label>
-                <input type="text" name="" id="nome" placeholder="Digite o nome do animal" required>
-
-                <label for="">Espécie</label>
-                <select disabled>
-                    <option value=""></option>
+                <label for="">Cliente que adotou</label>
+                <select id="pessoa" v-model="pessoaSelecionada"   required>
+                    <option v-for="pessoa in pessoas" :key="pessoa.id" :value="pessoa.id">
+                        {{ pessoa.nome }}
+                    </option>
                 </select>
         
-            <label for="">Raça</label>
-                <select disabled>
-                    <option value=""></option>
+                <label for="">Animal Adotado</label>
+                <select id="animal" v-model="animalSelecionado"  required>
+                    <option v-for="animal in animais" :key="animal.id" :value="animal.id">
+                        {{ animal.nome }}
+                    </option>
                 </select>
-
-                <label for="">Cor</label>
-                <input type="text"
-                name="" id=""
-                placeholder="Digite a cor"
-                required>
-           
-           
-            <div class="button-container">
+                      
+                <div class="button-container">
                 <button type="submit" class="button-enviar">Cadastrar</button>
-            </div>
-        </form>
-      </div>
+                </div>
+            </form>
+        </div>
     </div>
   </template>
-  
-  <script>
- 
-  </script>
+<script>
+import { get, teste } from '../src/Api2'; // Funções que fazem chamadas à API
+
+export default {
+  data() {
+    return {
+      pessoas: [], // Armazena o array de pessoas que será populado pela API
+      animais:[],
+      pessoaSelecionada: '',
+      animalSelecionado: ''
+    };
+  },
+  methods: {
+    async carregarPessoas() {
+      try {
+        let response = await get('pessoas/todasPessoas');
+        this.pessoas = response.filter(p => p.cargo === 'cliente');
+         response = await get('animais')
+        this.animais = response
+      } catch (error) {
+        console.error('Erro ao carregar as pessoas:', error);
+      }
+    },
+    async salvaAnimalOuPessoa() {
+      try {   
+        const animal = this.animais.find(a => a.id === this.animalSelecionado)
+        const pessoa = this.pessoas.find(p => p.id === this.pessoaSelecionada)
+        const params = pessoa.id+"/"+animal.id
+        await teste('POST', '/voluntarios/CriaAdocao/', '',params );
+      } catch (error) {
+        console.error('Erro ao cadastrar o funcionário:', error);
+      }
+    },
+  },
+  mounted() {
+    this.carregarPessoas(); 
+  },
+};
+</script>
   

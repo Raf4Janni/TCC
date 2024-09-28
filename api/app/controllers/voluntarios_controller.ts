@@ -4,6 +4,7 @@ import { DateTime } from 'luxon'
 import Voluntario from '#models/voluntario'
 import Animal from '#models/animal'
 import Registro from '#models/registro'
+import Adocao from '#models/adocao'
 
 export default class VoluntariosController {
   async index({}: HttpContext) {
@@ -64,6 +65,18 @@ export default class VoluntariosController {
     animal.raca = body.raca
 
     await animal.save()
+  }
+
+  async CriaAdocao({ params, response }: HttpContext){
+    let adocao = new Adocao()
+    adocao.cliente_id = params.cliente_id
+    adocao.animal_id = params.animal_id
+    adocao.criadoEm = DateTime.now()
+    await adocao.save()
+
+    response.status(201)
+
+    return adocao
   }
   /*
 

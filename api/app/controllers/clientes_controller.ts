@@ -5,7 +5,7 @@ import { DateTime } from 'luxon'
 
 export default class ClientesController {
   async index() {
-    const clientes = await db.from('clientes').select('*')
+    const clientes = await db.from('pessoas').select('*').where('cargo', 'cliente')
 
     return clientes
   }

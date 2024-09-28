@@ -8,7 +8,9 @@ export async function get(endponit) {
 }
 
 export async function teste(method, endponit, data, params) {
-
+  if(params != ''){
+    endponit= endponit+params
+  }
     const response = await fetch(url + endponit, {
 
         method: method,
