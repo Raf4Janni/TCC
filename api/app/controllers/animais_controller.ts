@@ -54,10 +54,11 @@ export default class AnimaisController {
     return animal
   }
 
-  async getTodasEspecies({ }: HttpContext) {
-      const especies = await db.from('especies').select('*')
-      console.log(especies)
-      return especies
+  async getTodasEspecies() {
+    const especies = await db
+      .from('especies')
+      .innerJoin('animais', 'especies.id', 'animais.especie_id')
+      .select('especies.*')
+    return especies
   }
-
 }
