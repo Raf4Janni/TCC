@@ -6,6 +6,8 @@ import Cliente from './cliente.js'
 import Registro from './registro.js'
 
 export default class Adocao extends BaseModel {
+  public static table = 'adocoes';
+
   @hasOne(() => Cliente)
   declare cliente: HasOne<typeof Cliente>
 

@@ -1,7 +1,6 @@
 const url = 'http://localhost:3333/';
 export async function get(endponit) {
 
-    console.log(endponit)
     const response = await fetch(url + endponit);
     const data = await response.json();
     return data;

@@ -48,9 +48,11 @@
 
 <script>
 import { teste } from '../src/Api2';
+import session from '../mixin/session.js'
 
 export default {
   name: "cadastropage",
+  mixins: [session],
   methods: {
     carregarDados: async function () {
       try {
@@ -75,6 +77,7 @@ export default {
         //console.log(data);
         await teste('POST', 'pessoas/func', data, '1312');
         console.log("Dados enviados com sucesso:", data);
+        this.set_session(`usuario`, data)
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }
