@@ -29,28 +29,55 @@
             </p>
 
             <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+            <div v-if="allSessions">
+                <h3>Sessions Salvas:</h3>
+                <ul>
+                    <li v-for="(value, key) in allSessions" :key="key">
+                        {{ key }}: {{ value }}
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { get } from '../src/Api2';
+import { get, teste } from '../src/Api2';
+import session from '../mixin/session.js'; // Importando o mixin
 
 const email = ref('');
 const senha = ref('');
 const errorMessage = ref('');
+const allSessions = ref({}); // Armazenar todas as sessões
 
+// Acessando o mixin
 const carregarDados = async () => {
     try {
         const pessoas = await get("pessoas/todasPessoas");
-        const usuario = pessoas.find(p => p.email === email.value && p.senha === senha.value);
+        const usuario = pessoas.find((p: { email: string; senha: string; }) => p.email === email.value && p.senha === senha.value);
         
         if (usuario) {
-            console.log("Login bem-sucedido", usuario);
+            session.methods.set_session('id', usuario.id); 
+            
+            const data = {
+
+                cpf,
+                rg,
+                email,
+                sexo,
+                senha
+            };
+            const token =  teste()
+            
         } else {
             errorMessage.value = "Credenciais inválidas. Tente novamente.";
         }
+
+        // Verificar todas as sessões
+        //allSessions.value = session.methods.get_all_sessions();
+
     } catch (error) {
         errorMessage.value = "Ocorreu um erro. Por favor, tente novamente.";
         console.error(error);
