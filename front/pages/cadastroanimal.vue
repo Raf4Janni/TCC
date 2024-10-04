@@ -101,7 +101,7 @@ import { get, teste } from '../src/Api2';
         };
   
           await teste("POST", 'animais', data, '');
-          console.log("Dados enviados com sucesso:", data);
+          this.$router.push("/listaanimais");
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);
         }
