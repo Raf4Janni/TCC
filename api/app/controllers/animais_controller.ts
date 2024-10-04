@@ -61,6 +61,7 @@ export default class AnimaisController {
       .select('especies.*')
     return especies
   }
+
   async getRaca({ params } : HttpContext) {
     const racas = await db
       .from('racas')
@@ -69,4 +70,14 @@ export default class AnimaisController {
       .where('racas.especie_id', params.especie_id)
     return racas
   }
+
+  async getEspecie({ params } : HttpContext) {
+    const especie = await db
+      .from('especies')
+      .innerJoin('animais', 'especies.id', 'animais.especie_id')
+      .select('especies.*')
+      .where('animais.especie_id', params.especie_id)
+    return especie
+  }
+
 }
