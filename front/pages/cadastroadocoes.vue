@@ -54,8 +54,16 @@ export default {
       try {   
         const animal = this.animais.find(a => a.id === this.animalSelecionado)
         const pessoa = this.pessoas.find(p => p.id === this.pessoaSelecionada)
-        const params = pessoa.id+"/"+animal.id
-        await teste('POST', '/voluntarios/CriaAdocao/', '',params );
+        
+        const animal_id = animal.id
+        const pessoa_id = pessoa.id
+        const data = {
+          animal_id,
+          pessoa_id
+        };
+        console.log(data)
+        
+        await teste('POST', 'voluntarios/CriaAdocao', data, "");
       } catch (error) {
         console.error('Erro ao cadastrar o funcionário:', error);
       }

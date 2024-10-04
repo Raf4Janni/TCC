@@ -24,7 +24,7 @@ export default class Adocao extends BaseModel {
   declare animal_id: number
 
   @column()
-  declare cliente_id: number
+  declare pessoa_id: number
 
   @column()
   declare registro_id: number

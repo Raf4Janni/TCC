@@ -1,7 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
-import Voluntario from '#models/voluntario'
 import Animal from '#models/animal'
 import Registro from '#models/registro'
 import Adocao from '#models/adocao'
@@ -67,19 +66,20 @@ export default class VoluntariosController {
     await animal.save()
   }
 
-  async CriaAdocao({ params, response }: HttpContext){
+  async CriaAdocao({ request }: HttpContext) {
+    const body = request.body()
+
     let adocao = new Adocao()
-    adocao.cliente_id = params.cliente_id
-    adocao.animal_id = params.animal_id
-    adocao.criadoEm = DateTime.now()
+
+    adocao.animal_id = body.animal_id
+    adocao.pessoa_id = body.pessoa_id
+
+    console.log(adocao)
     await adocao.save()
-
-    response.status(201)
-
-    return adocao
+    
   }
+  
   /*
-
   async store({ params }: HttpContext) {
     let voluntario = new Voluntario()
 

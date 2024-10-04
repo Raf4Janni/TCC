@@ -96,7 +96,7 @@ router.resource('/voluntarios', VoluntarioController).apiOnly()
 router.post('/voluntarios/AdicionaAnimail', [VoluntarioController, 'AdicionaAnimal'])
 router.post('/voluntarios/AlteraAnimal/:animal_id', [VoluntarioController, 'AlteraAnimal'])
 router.post('/voluntarios/AdicionaRegistro/:voluntario_id', [VoluntarioController, 'AdicionaRegistro'])
-router.post('/voluntarios/CriaAdocao/:cliente_id/:animal_id', [VoluntarioController, 'CriaAdocao'])
+router.post('/voluntarios/CriaAdocao', [VoluntarioController, 'CriaAdocao'])
 
 /**
  * TODO
