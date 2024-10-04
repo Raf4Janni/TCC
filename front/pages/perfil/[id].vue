@@ -17,9 +17,8 @@
                 <li>Senha: {{pessoa.senha}}</li>
                 <li>CPF: {{pessoa.cpf}}</li>
             </ul>
-            <button><nuxt-link :to="`/editarperfil/${pessoa.id}`">Editar seus Dados</nuxt-link></button>  
-            
-        </div> 
+            <nuxt-link :to="`/editarperfil/${pessoa.id}`"><button>Editar seus Dados</button></nuxt-link>
+        </div>
     </section>
     <p v-else>Carregando informações do perfil...</p>
 </div>
