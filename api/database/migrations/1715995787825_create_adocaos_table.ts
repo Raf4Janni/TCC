@@ -6,9 +6,8 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-      table.integer('cliente_id').unsigned().references('clientes.id').onDelete('CASCADE')
-      table.integer('registro_id').unsigned().references('registros.id').onDelete('CASCADE')
-      table.integer('animal_id').unsigned().references('animais.id').onDelete('CASCADE')
+      table.integer('pessoa_id').unsigned().references('id').inTable('pessoas').onDelete('CASCADE') // Corrigido
+      table.integer('animal_id').unsigned().references('id').inTable('animais').onDelete('CASCADE')
       table.timestamp('criado_em')
       table.timestamp('deletado_em')
     })

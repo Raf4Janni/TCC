@@ -6,6 +6,9 @@ import Cliente from '#models/cliente'
 import Veterinario from '#models/veterinario'
 import Administrador from '#models/administrador'
 import Funcionario from '#models/funcionario'
+import db from '@adonisjs/lucid/services/db'
+import { close } from 'fs'
+import Clinica from '#models/clinica'
 
 /* TODO
   Organizar o select{
@@ -34,7 +37,16 @@ export default class PessoasController {
     pessoa.cargo = 'cliente'
     pessoa.criadoEm = DateTime.now()
 
-    pessoa.save()
+    await pessoa.save()
+    
+    const ultimoIdRegistrado = await db.from('pessoas').orderBy('id', 'desc').first();
+    const idRegistrado = ultimoIdRegistrado?.id;
+
+    let cliente = new Cliente()
+    cliente.pessoa_id = idRegistrado
+    cliente.clinica_id = 1
+
+    await cliente.save()
   }
 
   async show({ params }: HttpContext) {
