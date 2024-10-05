@@ -19,7 +19,7 @@
                 <h3>Equipe TechPaws:</h3>
                 <p>Davi Francisco de Faria &nbsp;&nbsp; João Vitor Jacob &nbsp;&nbsp; Livia Emidio</p>
                 <p>Matheus Naoki Nebo &nbsp;&nbsp; Pedro Bighetti </p>
-                <p>Rafael Said &nbsp;&nbsp; Vitor Hugo Guilhoto </p>
+                <p>Rafael Said Jannini&nbsp;&nbsp; Vitor Hugo Guilhoto </p>
 
             </div>
         </footer>

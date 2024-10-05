@@ -68,9 +68,7 @@ export default {
     async carregarAnimal(){
       try {
         if (!this.selectedAnimal) return;
-        console.log(this.selectedAnimal)
-        const result = await get(`animais/${this.selectedAnimal}`)
-        console.log(result)
+        const result = await get(`animais/${this.selectedAnimal}`);
         this.animalFiltrado = result; 
       } catch (error) {
         console.error('Erro ao carregar o animal:', error);
