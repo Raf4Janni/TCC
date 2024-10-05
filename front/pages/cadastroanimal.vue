@@ -66,7 +66,7 @@ import { get, teste } from '../src/Api2';
     },
     name: "cadastroanimalpage",
     methods: {
-      carregarEspecies: async function () {
+      async carregarEspecies () {
         try {
           const result = await get('especies');
           this.especies = result;
@@ -76,7 +76,7 @@ import { get, teste } from '../src/Api2';
         }
       },
 
-      carregarDados: async function () {
+      async carregarDados() {
         try {
         const nome = document.getElementById('nome').value;
         const sexo = document.querySelector('input[name="sexo"]:checked')?.value;
@@ -106,7 +106,7 @@ import { get, teste } from '../src/Api2';
           console.error('Erro ao carregar os dados:', error);
         }
       },
-      carregarRacas: async function () {
+      async carregarRacas() {
       try {
         if (!this.selectedEspecie) return;
 
