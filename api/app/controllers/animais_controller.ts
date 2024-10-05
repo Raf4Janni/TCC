@@ -39,7 +39,7 @@ export default class AnimaisController {
     animal.localResgate = body.localResgate
     animal.estadoSaude = body.estadoSaude
     animal.raca = body.raca
-
+    
     await animal.save()
 
     return animal

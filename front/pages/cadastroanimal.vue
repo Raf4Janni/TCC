@@ -81,27 +81,32 @@ import { get, teste } from '../src/Api2';
         const nome = document.getElementById('nome').value;
         const sexo = document.querySelector('input[name="sexo"]:checked')?.value;
         const dataResgate = document.getElementById('dataResgate').value;
-        const especie = this.selectedEspecie;
-        const raca = this.selectedRaca;
+        //const especie = this.selectedEspecie;
+        //const raca = this.selectedRaca;
         const dataNascimento = document.getElementById('dataNascimento').value;
         const cor = document.getElementById('cor').value;
         const localResgate = document.getElementById('localResgate').value;
         const estadoSaude = document.getElementById('estadoSaude').value;
 
+        const especie = this.especies.find(e => e.id === this.selectedEspecie);
+        //const raca = this.raca.find(r => r.id === this.selectedRaca);
+        console.log(selectedRaca);
+
+        /*
         const data = {
           nome,
           sexo,
           dataResgate,
-          especie,
+          especie.id,
           raca,
           dataNascimento,
           cor,
           localResgate,
           estadoSaude
         };
-  
-          await teste("POST", 'animais', data, '');
-          this.$router.push("/listaanimais");
+          */
+          //await teste("POST", 'animais', data, '');
+          //this.$router.push("/listaanimais");
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);
         }

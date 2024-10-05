@@ -11,7 +11,7 @@
           <li>
             <p>Nome: {{ animal.nome }}</p>
             <p>Raça: {{ animal.raca }}</p>
-            <p>Espécie: {{ especie.nome }}</p>
+            <p>Espécie: {{ animal.especie }}</p>
             <p>Sexo: {{ animal.sexo }}</p>
           </li>
         </ul>
@@ -54,11 +54,11 @@ export default {
         const id = route.params.id;
 
         const result = await get(`animais/${id}`); 
-        const animal = result;
 
         const especies = await get(`especies`);
-        this.especie = especies.find((especie) => especie.id === animal.especie_id);
-
+        console.log(especies);
+        //this.especie = especies.find((especie) => especie.id === this.animal.);
+        console.log(this.especie);
 
         this.animal = result; 
 
