@@ -11,7 +11,7 @@
           <li>
             <p>Nome: {{ animal.nome }}</p>
             <p>Raça: {{ animal.raca }}</p>
-            <p>Espécie: {{ animal.especie }}</p>
+            <p>Espécie: {{ especie.nome }}</p>
             <p>Sexo: {{ animal.sexo }}</p>
           </li>
         </ul>
@@ -42,6 +42,8 @@ export default {
   data() {
     return {
       animal: null,
+      especie: null,
+      raca: null,
       registros: [], // Objeto para armazenar os dados do animal
     };
   },
@@ -52,6 +54,11 @@ export default {
         const id = route.params.id;
 
         const result = await get(`animais/${id}`); 
+        const animal = result;
+
+        const especies = await get(`especies`);
+        this.especie = especies.find((especie) => especie.id === animal.especie_id);
+
 
         this.animal = result; 
 
