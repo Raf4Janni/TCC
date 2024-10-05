@@ -55,12 +55,12 @@ export default {
 
         const result = await get(`animais/${id}`); 
 
+        this.animal = result;  
         const especies = await get(`especies`);
         console.log(especies);
-        //this.especie = especies.find((especie) => especie.id === this.animal.);
+        this.especie = especies.find((especie) => especie.id === this.animal.especie_id);
+        console.log(this.animal.especie_id)
         console.log(this.especie);
-
-        this.animal = result; 
 
         const result2 = await get(`registros/animal/${id}`);
         
