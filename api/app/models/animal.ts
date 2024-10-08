@@ -15,7 +15,12 @@ export default class Animal extends BaseModel {
 
   @column()
   declare sexo: string
-
+  
+  @column()
+  declare especie:string
+  
+  @column()
+  declare raca: string
   @column.dateTime()
   declare dataResgate: DateTime
 
@@ -30,13 +35,13 @@ export default class Animal extends BaseModel {
 
   @column()
   declare estadoSaude: string
-
+  /*
   @hasOne(() => Especie)
-  declare especie: HasOne<typeof Especie>
+  declare especie_id: HasOne<typeof Especie>
 
   @hasOne(() => Raca)
-  declare raca: HasOne<typeof Raca>
-
+  declare raca_id: HasOne<typeof Raca>
+  */
   @column.dateTime({ autoCreate: true })
   declare criadoEm: DateTime
 

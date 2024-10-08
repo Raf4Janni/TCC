@@ -10,19 +10,6 @@ export default class AdocoesController {
     return adocoes
   }
 
-  async store({ params, response }: HttpContext) {
-    let adocao = new Adocao()
-    adocao.cliente_id = params.cliente_id
-    adocao.registro_id = params.registro_id
-    adocao.animal_id = params.animal_id
-
-    await adocao.save()
-
-    response.status(201)
-
-    return adocao
-  }
-
   async show({ params }: HttpContext) {
     const adocao = await Adocao.findOrFail(params.id)
 

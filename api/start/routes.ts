@@ -27,6 +27,8 @@ import Administrador from '#models/administrador'
 import { administrador, veterinario, voluntario } from '#abilities/main'
 import db from '@adonisjs/lucid/services/db'
 import Pessoa from '#models/pessoa'
+import EspeciesController from '#controllers/especies_controller'
+import RacasController from '#controllers/racas_controller'
 
 router.get('/', async () => {
   return {
@@ -43,12 +45,13 @@ router.post('administradores/Demitir', [AdministradoresController, 'Demitir'])
 
 //ROTAS DA ADOÇÂO
 router.resource('/adocoes', AdocoesController).apiOnly()
-router.post('/adocoes/:cliente_id/:animal_id/teste', [AdocoesController, 'store'])
 
 //ROTA DO ANIMAL
 router.resource('/animais', AnimaisController).apiOnly()
-router.get('/especies', [AnimaisController, 'getTodasEspecies'])
-router.get('/especies/:especie_id', [AnimaisController, 'getEspecie'])
+router.get('animais/especies', [AnimaisController, 'getTodasEspecies'])
+
+router.get('/especies', [EspeciesController, "index"])
+router.get('/racas', [RacasController, 'index'])
 router.get('/racas/:especie_id', [AnimaisController, 'getRaca'])
 
 //ROTAS DO CLIENTE

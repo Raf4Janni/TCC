@@ -75,9 +75,8 @@ export default {
         };
 
         //console.log(data);
-        await teste('POST', 'pessoas/func', data, '1312');
+        await teste('POST', 'pessoas/func', data, '');
         console.log("Dados enviados com sucesso:", data);
-        this.set_session(`usuario`, data)
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }

@@ -17,8 +17,8 @@ export default class extends BaseSchema {
       table.string('raca')
       table.timestamp('criado_em')
       table.timestamp('deletado_em')
-      table.integer('especie_id').unsigned().references('especies.id').onDelete('CASCADE')
-      table.integer('raca_id').unsigned().references('racas.id').onDelete('CASCADE')
+      //table.integer('especie_id').unsigned().references('especies.id').onDelete('CASCADE')
+      //table.integer('raca_id').unsigned().references('racas.id').onDelete('CASCADE')
     })
   }
 

@@ -4,6 +4,8 @@ import { DateTime } from 'luxon'
 import Animal from '#models/animal'
 import Registro from '#models/registro'
 import Adocao from '#models/adocao'
+import Especie from '#models/especie'
+import Raca from '#models/raca'
 
 export default class VoluntariosController {
   async index({}: HttpContext) {
@@ -21,7 +23,7 @@ export default class VoluntariosController {
     animal.nome = body.nome
     animal.sexo = body.sexo
     animal.dataResgate = body.dataResgate
-    animal.especie = body.especie
+    animal.especie =  body.especie
     animal.dataNascimento = body.dataNascimento
     animal.cor = body.cor
     animal.localResgate = body.localResgate
@@ -29,6 +31,8 @@ export default class VoluntariosController {
     animal.raca = body.raca
 
     await animal.save()
+
+    console.log(animal)
   }
 
   async AdicionaRegistro({ request, params }: HttpContext) {

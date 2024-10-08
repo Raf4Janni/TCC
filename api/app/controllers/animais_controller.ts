@@ -1,4 +1,5 @@
 import Animal from '#models/animal'
+import Especie from '#models/especie'
 import type { HttpContext } from '@adonisjs/core/http'
 import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
@@ -55,10 +56,7 @@ export default class AnimaisController {
   }
 
   async getTodasEspecies() {
-    const especies = await db
-      .from('especies')
-      .innerJoin('animais', 'especies.id', 'animais.especie_id')
-      .select('especies.*')
+    const especies = await Especie.all()
     return especies
   }
 

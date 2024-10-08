@@ -99,8 +99,6 @@ import { get, teste } from '../src/Api2';
           nome,
           sexo,
           dataResgate,
-          especie_id,
-          raca_id,
           especie,
           raca,
           dataNascimento,
@@ -109,7 +107,7 @@ import { get, teste } from '../src/Api2';
           estadoSaude
         };
 
-          await teste('POST', 'animais', data, '');
+          await teste('POST', 'voluntarios/AdicionaAnimail', data, '');
           this.$router.push("/listaanimais");
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);

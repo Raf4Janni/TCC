@@ -30,14 +30,6 @@
 
             <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
 
-            <div v-if="allSessions">
-                <h3>Sessions Salvas:</h3>
-                <ul>
-                    <li v-for="(value, key) in allSessions" :key="key">
-                        {{ key }}: {{ value }}
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </template>
@@ -50,31 +42,22 @@ import session from '../mixin/session.js'; // Importando o mixin
 const email = ref('');
 const senha = ref('');
 const errorMessage = ref('');
-const allSessions = ref({}); // Armazenar todas as sessões
 
-// Acessando o mixin
+const router = useRouter(); // Inicializar o roteador
 const carregarDados = async () => {
     try {
+       
         const pessoas = await get("pessoas/todasPessoas");
         const usuario = pessoas.find((p: { email: string; senha: string; }) => p.email === email.value && p.senha === senha.value);
-        
+         console.log(usuario)
         if (usuario) {
             session.methods.set_session('id', usuario.id); 
-            
-            const data = {
 
-                cpf,
-                rg,
-                email,
-                sexo,
-                senha
-            };
-            const token =  teste()
-            
+            router.push('/perfiladmin');
         } else {
             errorMessage.value = "Credenciais inválidas. Tente novamente.";
         }
-
+        
         // Verificar todas as sessões
         //allSessions.value = session.methods.get_all_sessions();
 
