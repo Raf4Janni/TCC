@@ -77,6 +77,7 @@ export default {
         //console.log(data);
         await teste('POST', 'pessoas/func', data, '');
         console.log("Dados enviados com sucesso:", data);
+        this.$router.push('/login');
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }

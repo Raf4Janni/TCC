@@ -77,7 +77,7 @@ export default {
         async editarDados() {
             try {
 
-                await teste("PUT","pessoas/atualizar", this.pessoa, this.pessoa.id)
+                await teste("PUT","pessoas/atualizar", this.pessoa, '')
                 this.$router.push(`/perfil/${this.pessoa.id}`)
 
             } catch (error) {
