@@ -20,11 +20,8 @@
                 <nuxt-link :to="`/editarperfil/${pessoa.id}`"><button>Editar seus Dados</button></nuxt-link>
             </div>
             
-            <div style="display: flex; gap: 10px; margin-top: 20px;">
-                <nuxt-link to="/cadastroanimal"><button>Cadastro de Animal</button></nuxt-link>
-                <nuxt-link to="/cadastrofuncionario"><button>Cadastro de Funcionário</button></nuxt-link>
-                <nuxt-link to="/cadastroadocoes"><button>Cadastro de Adoção</button></nuxt-link>
-                <button @click="mostrarMensagem">Histórico de Adoções</button>
+            <div style="display: flex; gap: 10px; margin-top: 20px; align-items: center; margin-left: 30%;">
+                <nuxt-link to="/loginadmin"><button>Acesso rápido</button></nuxt-link>
                 <button @click="logout">Logout</button>
             </div>
         </section>

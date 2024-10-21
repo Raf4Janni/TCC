@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <img class="icone_logo" src="/components/assets/img/TechPaws1.png" />
+    <nuxt-link to="/" class="linkheader"><img class="icone_logo" src="/components/assets/img/TechPaws1.png"/></nuxt-link>
     <nuxt-link to="/" class="linkheader"><h4>Home</h4></nuxt-link>
     <nuxt-link to="/sobre" class="linkheader"><h4>Sobre</h4></nuxt-link>
     <nuxt-link to="/adocoes" class="linkheader"><h4>Adoções</h4></nuxt-link>
