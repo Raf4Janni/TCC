@@ -1,6 +1,7 @@
 <template>
     <div class="fade-in">
-        <div class="filtro_pessoas">
+    <section>
+        <div class="filtro">
           <label>Filtro de Pesquisa</label>
           <select v-model="selectedAnimal" @change="carregarAnimal">
             <option value=""></option>
@@ -8,8 +9,8 @@
           </select>
           <button @click="carregarDados">Mostrar Todos</button>
         </div>
-        <section v-for="pessoa in pessoas" :key="pessoa.id">
-            <div class="div2">
+        
+            <div class="div2" v-for="pessoa in pessoas" :key="pessoa.id">
                 <div>
                     <ul>
                         <li>
