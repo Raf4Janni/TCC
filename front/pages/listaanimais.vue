@@ -1,5 +1,5 @@
 <template>
-    <div class="fade-in">
+    <div class="fade-in" v-if="isCliente">
       <section>
         <div class="filtro">
           <label>Filtro de Pesquisa</label>
@@ -29,11 +29,13 @@
         </div>
       </section>
     </div>
+    <p v-else>Não possui acesso</p>
   </template>
   
   <script>
   import { get } from '../src/Api2';
   import { useRoute } from 'vue-router';
+  import session from '~/mixin/session';
   
   export default {
     data() {
@@ -41,6 +43,7 @@
         animais: [], // Array para armazenar os dados dos animais
       };
     },
+    mixins: [session],
     methods: {
       async carregarDados() {
         try {
@@ -48,6 +51,7 @@
           const id = route.params.id; // Obtenha o id da rota, se necessário
           const result = await get('animais', id); // Chamada à API para buscar os animais
           this.animais = result; // Atualiza o array `animais` com os dados recebidos
+          this.isCliente = this.get_session('cargo') === 'cliente' ? false : true;
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);
         }

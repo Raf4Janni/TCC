@@ -1,5 +1,5 @@
 <template>
-  <div class="fade-in">
+  <div class="fade-in" v-if="isCliente">
     <header>
       <h2>Cadastro de Funcionário</h2>
     </header>
@@ -32,10 +32,12 @@
       </div>
     </form>
   </div>
+  <p v-else>Não possui acesso</p>
 </template>
 
 <script>
 import { get, teste } from '../src/Api2'; // Funções que fazem chamadas à API
+import session from '~/mixin/session'; // Importando o mixin
 
 export default {
   data() {
@@ -49,14 +51,17 @@ export default {
         email: '',
         senha: '',
         salario: '',
+        isCliente: null
       },
     };
   },
+  mixins: [session],
   methods: {
     async carregarPessoas() {
       try {
         const response = await get('pessoas/todasPessoas'); // Chama a API para buscar a lista de pessoas
         this.pessoas = response.filter(p => p.cargo === 'cliente'); // Supondo que a resposta seja um array de objetos com { id, nome, cpf, etc. }
+        this.isCliente = this.get_session('cargo') === 'cliente' ? false : true;
       } catch (error) {
         console.error('Erro ao carregar as pessoas:', error);
       }

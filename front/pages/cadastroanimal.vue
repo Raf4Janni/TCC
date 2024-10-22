@@ -1,5 +1,5 @@
 <template>
-  <div class="fade-in">
+  <div class="fade-in" v-if="isCliente">
     <header>
       <h2>Cadastro de Animal</h2>
     </header>
@@ -49,28 +49,32 @@
       </div>
     </form>
   </div>
+  <p v-else>Não possui acesso</p>
 </template>
 
 
 <script>
 import { get, teste } from '../src/Api2';
-  
+import sessions from '~/mixin/session';
   export default {
     data(){
       return{
         selectedEspecie: null,
         selectedRaca: null,
         especies: [],
-        racas: []
+        racas: [],
+        isCliente: null
       };
     },
+    mixins: [sessions],
     name: "cadastroanimalpage",
     methods: {
       async carregarEspecies () {
         try {
           const result = await get('especies');
           this.especies = result;
-          
+          this.isCliente = this.get_session('cargo') === 'cliente' ? false : true;
+
         } catch (error) {
           console.error('Erro ao carregar as espécies:', error);
         }
