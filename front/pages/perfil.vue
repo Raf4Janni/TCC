@@ -21,8 +21,9 @@
         </div>
         <div v-if="isCliente" style="display: flex; gap: 10px; margin-top: 20px; align-items: center; margin-left: 30%;">
           <nuxt-link to="/loginadmin"><button>Acesso rápido</button></nuxt-link>
-          <button @click="logout">Logout</button>
+          
         </div>
+        <button @click="logout">Logout</button>
       </section>
       <p v-else>Carregando informações do perfil...</p>
       <p v-if="mensagem" class="mensagem">{{ mensagem }}</p>
