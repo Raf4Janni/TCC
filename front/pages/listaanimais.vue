@@ -1,6 +1,14 @@
 <template>
     <div class="fade-in">
       <section>
+        <div class="filtro">
+          <label>Filtro de Pesquisa</label>
+          <select v-model="selectedAnimal" @change="carregarAnimal">
+            <option value=""></option>
+            <option v-for="animal in animais" :key="animal.id" :value="animal.id">{{ animal.nome }}</option>
+          </select>
+          <button @click="carregarDados">Mostrar Todos</button>
+        </div>
         <div class="div2" v-for="animal in animais" :key="animal.id">
           <div>
             <ul>
