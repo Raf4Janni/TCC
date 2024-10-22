@@ -64,6 +64,7 @@ export default {
         console.log(data)
         
         await teste('POST', 'voluntarios/CriaAdocao', data, "");
+        this.$router.push('/loginadmin');
       } catch (error) {
         console.error('Erro ao cadastrar o funcionário:', error);
       }

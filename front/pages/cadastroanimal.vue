@@ -108,7 +108,7 @@ import { get, teste } from '../src/Api2';
         };
 
           await teste('POST', 'voluntarios/AdicionaAnimail', data, '');
-          this.$router.push("/listaanimais");
+          this.$router.push("/loginadmin");
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);
         }
