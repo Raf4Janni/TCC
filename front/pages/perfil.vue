@@ -17,7 +17,7 @@
             <li>Senha: {{ pessoa.senha }}</li>
             <li>CPF: {{ pessoa.cpf }}</li>
           </ul>
-          <nuxt-link :to="`/editarperfil/${pessoa.id}`"><button>Editar seus Dados</button></nuxt-link>
+          <nuxt-link :to="`/editarperfil`"><button>Editar seus Dados</button></nuxt-link>
         </div>
         <div v-if="isCliente" style="display: flex; gap: 10px; margin-top: 20px; align-items: center; margin-left: 30%;">
           <nuxt-link to="/loginadmin"><button>Acesso rápido</button></nuxt-link>
@@ -31,7 +31,6 @@
   
   <script>
   import { get } from '../../src/Api2';
-  import { useRoute } from 'vue-router';
   import session from '~/mixin/session';
   
   export default {
@@ -46,7 +45,6 @@
     methods: {
       async carregarDados() {
         try {
-          const route = useRoute();
           const id = this.get_session('id');
           const result = await get(`pessoas/${id}`);
 

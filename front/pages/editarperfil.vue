@@ -51,6 +51,7 @@
 <script>
 import { teste } from '../../src/Api2';
 import { get } from '../../src/Api2';
+import session from '~/mixin/session';
 
 export default {
     data() {
@@ -58,11 +59,11 @@ export default {
             pessoa: null,
         };
     },
+    mixins: [session],
     methods: {
         async carregarDados() {
             try {
-                const route = useRoute()
-                const id = route.params.id
+                const id = this.get_session('id');
 
                 const result = await get(`pessoas/${id}`)
                 this.pessoa = result
@@ -78,7 +79,7 @@ export default {
             try {
 
                 await teste("PUT","pessoas/atualizar", this.pessoa, '')
-                this.$router.push(`/perfil/${this.pessoa.id}`)
+                this.$router.push(`/perfil`)
 
             } catch (error) {
                 console.error('Erro a editar os dados:', error)
