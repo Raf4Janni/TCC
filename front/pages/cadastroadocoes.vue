@@ -1,5 +1,5 @@
 <template>
-    <div class="fade-in">
+    <div class="fade-in" v-if="isCliente">
         <header>
             <h2>CADASTRO DE ADOÇÃO</h2>
         </header>
@@ -26,9 +26,11 @@
             </form>
         </div>
     </div>
+    <p v-else>Não possui acesso</p>
   </template>
 <script>
-import { get, teste } from '../src/Api2'; // Funções que fazem chamadas à API
+import { get, teste } from '../src/Api2'; 
+import session from '~/mixin/session';// Funções que fazem chamadas à API
 
 export default {
   data() {
@@ -36,15 +38,20 @@ export default {
       pessoas: [], // Armazena o array de pessoas que será populado pela API
       animais:[],
       pessoaSelecionada: '',
-      animalSelecionado: ''
+      animalSelecionado: '',
+      isCliente: null
     };
   },
+  mixins: [session],
   methods: {
     async carregarPessoas() {
       try {
         let response = await get('pessoas/todasPessoas');
         this.pessoas = response.filter(p => p.cargo === 'cliente');
-         response = await get('animais')
+        response = await get('animais')
+
+        this.isCliente = this.get_session('cargo') === 'cliente' ? false : true;
+
         this.animais = response
       } catch (error) {
         console.error('Erro ao carregar as pessoas:', error);
