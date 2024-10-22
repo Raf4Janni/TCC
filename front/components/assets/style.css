@@ -54,6 +54,7 @@ p {
 
 .filtro{    
 max-width: 300px;
+text-align: left    ;
 }
 
 ul {
@@ -502,7 +503,4 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
         height: 200px;
     }
 
-    .filtro_pessoas{
-        max-width: 300px;
-        padding-top: 50px;   
-    }
+
