@@ -52,7 +52,9 @@ const carregarDados = async () => {
          console.log(usuario)
         if (usuario) {
             session.methods.set_session('id', usuario.id); 
+            session.methods.set_session('cargo', usuario.cargo);
 
+            
             router.push('/perfiladmin');
         } else {
             errorMessage.value = "Credenciais inválidas. Tente novamente.";

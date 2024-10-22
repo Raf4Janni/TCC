@@ -63,7 +63,7 @@ export default {
       this.isLoggedIn = !!userId;
 
       if (!this.isLoggedIn) {
-        this.$router.push('/login');
+        //this.$router.push('/login');
       }
     },
   },
