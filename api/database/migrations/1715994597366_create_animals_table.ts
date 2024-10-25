@@ -15,6 +15,7 @@ export default class extends BaseSchema {
       table.string('local_resgate')
       table.string('estado_saude')
       table.string('raca')
+      table.string('adotado')
       table.timestamp('criado_em')
       table.timestamp('deletado_em')
       //table.integer('especie_id').unsigned().references('especies.id').onDelete('CASCADE')

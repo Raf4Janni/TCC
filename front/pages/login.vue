@@ -53,7 +53,7 @@ const carregarDados = async () => {
         if (usuario) {
             session.methods.set_session('id', usuario.id); 
             session.methods.set_session('cargo', usuario.cargo);
-
+            session.methods.set_session('nome', usuario.nome);
             
             router.push('/perfil');
         } else {

@@ -1,5 +1,5 @@
 <template>
-    <div class="fade-in" v-if="isCliente">
+    <div class="fade-in" v-if="!isCliente">
       <section>
         <div class="filtro">
           <label>Filtro de Pesquisa</label>
@@ -51,7 +51,7 @@
           const id = route.params.id; // Obtenha o id da rota, se necessário
           const result = await get('animais', id); // Chamada à API para buscar os animais
           this.animais = result; // Atualiza o array `animais` com os dados recebidos
-          this.isCliente = this.get_session('cargo') === 'cliente' ? false : true;
+          this.isCliente = this.get_session('cargo') === 'cliente'; // true se for cliente
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);
         }

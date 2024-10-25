@@ -15,10 +15,10 @@ export default class Animal extends BaseModel {
 
   @column()
   declare sexo: string
-  
+
   @column()
-  declare especie:string
-  
+  declare especie: string
+
   @column()
   declare raca: string
   @column.dateTime()
@@ -35,6 +35,9 @@ export default class Animal extends BaseModel {
 
   @column()
   declare estadoSaude: string
+
+  @column()
+  declare adotado: string
   /*
   @hasOne(() => Especie)
   declare especie_id: HasOne<typeof Especie>

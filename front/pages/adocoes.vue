@@ -37,6 +37,9 @@
               <button class="btnlink">Ver Mais</button>
             </nuxt-link>
           </div>
+          <div>
+              <button class="btnAdocoes">Adoções</button> 
+          </div>
         </li>
     </ul>
 </section>
@@ -74,6 +77,14 @@ export default {
         console.error('Erro ao carregar o animal:', error);
       }
     },
+    async adotarAnimal(){
+      try {
+        const result = await get(`animais/${this.selectedAnimal}`);
+        this.animalFiltrado = result; 
+      } catch (error) {
+        console.error('Erro ao carregar o animal:', error);
+      }
+    }
   },
   mounted() {
     // Carrega os dados automaticamente quando o componente é montado
