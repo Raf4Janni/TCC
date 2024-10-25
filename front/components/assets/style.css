@@ -503,4 +503,26 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
         height: 200px;
     }
 
+    .registroanamnese{
+
+    }
+
+    .divregistroanamnese{
+            display: grid;
+            grid-template-columns:repeat(1, 2fr);
+            grid-template-rows:repeat(1, 1fr);
+            align-items: center;
+    }
+
+    .registro_estadosaude{
+        height: 300px;
+        text-align:start;
+    }
+
+    .registro_estadosaude::placeholder {
+        position: absolute;
+        top: 0; 
+        left: 0;
+}
+
 
