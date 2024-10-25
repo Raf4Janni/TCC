@@ -71,7 +71,7 @@ router.post('/enderecos/:clinica_id/:pessoa_id/teste', [EnderecosController, 'st
 
 //ROTAS DO FUNCIONARIO
 router.resource('/funcionarios', FuncionariosController).apiOnly()
-router.post('funcionarios/:pessoa_id/:clinica_id/:administrador_id', [FuncionariosController, 'store',])
+router.post('funcionarios/', [FuncionariosController, 'store'])
 
 //ROTA DA PESSOA
 //router.resource('/pessoas', PessoasController).apiOnly()

@@ -10,6 +10,8 @@ export async function teste(method, endponit, data, params) {
   if(params != ''){
     endponit= endponit+params
   }
+  console.log(endponit)
+  
     const response = await fetch(url + endponit, {
 
         method: method,
@@ -18,5 +20,5 @@ export async function teste(method, endponit, data, params) {
           },
         body: data ? JSON.stringify(data) : null,
       });
-
+  
 };

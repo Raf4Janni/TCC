@@ -1,5 +1,5 @@
 <template>
-  <div class="fade-in" v-if="isCliente">
+  <div class="fade-in" v-if="!isCliente">
     <header>
       <h2>Cadastro de Funcionário</h2>
     </header>
@@ -61,7 +61,8 @@ export default {
       try {
         const response = await get('pessoas/todasPessoas'); // Chama a API para buscar a lista de pessoas
         this.pessoas = response.filter(p => p.cargo === 'cliente'); // Supondo que a resposta seja um array de objetos com { id, nome, cpf, etc. }
-        this.isCliente = this.get_session('cargo') === 'cliente' ? false : true;
+        this.isCliente = this.get_session('cargo') === 'cliente'; // true se for cliente
+
       } catch (error) {
         console.error('Erro ao carregar as pessoas:', error);
       }
@@ -88,7 +89,7 @@ export default {
         };
 
         // Chama a API para cadastrar o funcionário
-        await teste('POST', 'administradores/AdicionaFuncionario', dadosFuncionario);
+        await teste('POST', 'funcionarios/', dadosFuncionario, "");
         
         alert('Funcionário cadastrado com sucesso!');
         this.$router.push('/loginadmin');
