@@ -503,6 +503,13 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
         height: 200px;
     }
 
+<<<<<<< HEAD
+=======
+    .registroanamnese{
+
+    }
+
+>>>>>>> origin/main
     .divregistroanamnese{
             display: grid;
             grid-template-columns:repeat(1, 2fr);
