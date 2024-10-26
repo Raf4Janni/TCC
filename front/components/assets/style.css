@@ -443,6 +443,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
       .slide {
         min-width: 100%;
         box-sizing: border-box;
+        
       }
       
       .slide img {
@@ -464,10 +465,12 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
       
       .prev {
         left: 10px;
+        margin-top: 10px  ;
       }
       
       .next {
         right: 10px;
+        margin-top: 10px  ;
       }
       
       .imgsection {
@@ -503,13 +506,10 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
         height: 200px;
     }
 
-<<<<<<< HEAD
-=======
     .registroanamnese{
 
     }
 
->>>>>>> origin/main
     .divregistroanamnese{
             display: grid;
             grid-template-columns:repeat(1, 2fr);
