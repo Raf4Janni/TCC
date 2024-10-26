@@ -37,9 +37,6 @@
               <button class="btnlink">Ver Mais</button>
             </nuxt-link>
           </div>
-          <div>
-              <button class="btnAdocoes">Adoções</button> 
-          </div>
         </li>
     </ul>
 </section>
@@ -62,8 +59,9 @@ export default {
         this.animalFiltrado = null;
         const route = useRoute();
         const id = route.params.id;
-        const result = await get('animais', id);
-        this.animais = result; // Atualiza o array `animais` com os dados recebidos
+        const result = await get('animais'); // Assumindo que este endpoint retorna todos os animais
+        this.animais = result.filter(a => !a.adotado); // Filtra apenas os animais não adotados
+        //this.animais = result;
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }

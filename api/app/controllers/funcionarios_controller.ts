@@ -3,6 +3,7 @@ import db from '@adonisjs/lucid/services/db'
 import { DateTime } from 'luxon'
 import Funcionario from '#models/funcionario'
 import Pessoa from '#models/pessoa'
+import Animal from '#models/animal'
 
 export default class FuncinariosController {
   async index({}: HttpContext) {
@@ -55,5 +56,24 @@ export default class FuncinariosController {
     funcionario.save()
 
     return funcionario
+  }
+
+  async AlteraAnimal({ request, params }: HttpContext) {
+    const body = request.body()
+
+    let animal = await Animal.findOrFail(params.animal_id)
+
+    animal.nome = body.nome
+    animal.sexo = body.sexo
+    animal.dataResgate = body.dataResgate
+    animal.especie = body.especie
+    animal.dataNascimento = body.dataNascimento
+    animal.cor = body.cor
+    animal.localResgate = body.localResgate
+    animal.estadoSaude = body.estadoSaude
+    animal.raca = body.raca
+    animal.adotado = body.adotado
+
+    await animal.save()
   }
 }
