@@ -21,6 +21,7 @@ export default class Animal extends BaseModel {
 
   @column()
   declare raca: string
+
   @column.dateTime()
   declare dataResgate: DateTime
 
@@ -37,7 +38,7 @@ export default class Animal extends BaseModel {
   declare estadoSaude: string
 
   @column()
-  declare adotado: string
+  declare adotado: boolean
   /*
   @hasOne(() => Especie)
   declare especie_id: HasOne<typeof Especie>

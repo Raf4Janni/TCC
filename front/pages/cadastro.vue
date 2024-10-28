@@ -62,7 +62,7 @@ export default {
         const rg = document.getElementById('rg').value;
         const email = document.getElementById('email').value;
         const senha = document.getElementById('senha').value;
-        const sexo = document.querySelector('input[name="sexo"]:checked')?.value; // Mudança aqui
+        const sexo = document.querySelector('input[name="sexo"]:checked')?.value;
 
         const data = {
           nome,
@@ -74,10 +74,10 @@ export default {
           senha
         };
 
-        //console.log(data);
         await teste('POST', 'pessoas/func', data, '');
         console.log("Dados enviados com sucesso:", data);
-        this.$router.push('/login');
+        
+        this.$router.push('/login'); // Redireciona para a página de login após o cadastro
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }
