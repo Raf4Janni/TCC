@@ -44,11 +44,11 @@
     },
     mixins: [session],
     methods: {
-      
       formatarData(dataString) {
         const partes = dataString.split('-');
         return `${partes[2]}/${partes[1]}/${partes[0]}`;
-      },async carregarDados() {
+      },
+      async carregarDados() {
         try {
           const id = this.get_session('id');
           const result = await get(`pessoas/${id}`);

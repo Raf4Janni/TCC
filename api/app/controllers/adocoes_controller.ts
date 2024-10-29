@@ -6,14 +6,22 @@ import { DateTime } from 'luxon'
 export default class AdocoesController {
   async index() {
     const adocoes = await db.from('adocoes').select('*')
-
-    return adocoes
+    const data = await this.pegaDataAdocao()
+    return {
+      adocoes: adocoes,
+      data: data,
+    }
   }
 
   async show({ params }: HttpContext) {
     const adocao = await Adocao.findOrFail(params.id)
 
     return adocao
+  }
+
+  async pegaDataAdocao() {
+    const data = await db.from('adocoes').select('criado_em')
+    return data
   }
 
   async destroy({ params }: HttpContext) {

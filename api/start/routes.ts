@@ -45,6 +45,7 @@ router.post('administradores/Demitir', [AdministradoresController, 'Demitir'])
 
 //ROTAS DA ADOÇÂO
 router.resource('/adocoes', AdocoesController).apiOnly()
+router.get('/adocoes/pegaDataAdocao', [AdocoesController, 'pegaDataAdocao'])
 
 //ROTA DO ANIMAL
 router.resource('/animais', AnimaisController).apiOnly()
