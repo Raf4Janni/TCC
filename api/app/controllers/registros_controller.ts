@@ -16,29 +16,20 @@ export default class RegistrosController {
     return registro
   }
 
-  async store({ request, response }: HttpContext) {
+  async store({ request }: HttpContext) {
     const body = request.body()
 
-    console.log('teste')
-
     let registro = new Registro()
+
     registro.autor = body.autor
     registro.informacoes = body.informacoes
     registro.tipoRegistro = body.tipoRegistro
+    registro.dataRegistro = DateTime.now()
+    registro.funcionario_id = body.funcionario_id
     registro.animal_id = body.animal_id
     registro.criadoEm = DateTime.now()
 
-    if (body.veterinario_id !== null) {
-      registro.veterinario_id = body.veterinario_id
-    } else {
-      registro.voluntario_id = body.voluntario_id
-    }
-
     await registro.save()
-
-    response.status(201)
-
-    return registro
   }
 
   async show({ params }: HttpContext) {

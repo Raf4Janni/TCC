@@ -80,18 +80,18 @@ export default class FuncinariosController {
 
   async BuscaFuncionarioPelaPessoa({params} : HttpContext){
     const funcionario = (await Funcionario.query().where('pessoa_id', params.pessoa_id))[0]
-    
+
     return funcionario
   }
-  /*
-  async AdicionaRegistro({ request, params }: HttpContext) {
+
+  async AdicionaRegistro({ request }: HttpContext) {
     const body = request.body()
 
     let registro = new Registro()
 
     registro.autor = body.autor
     registro.informacoes = body.informacoes
-    registro.tipoRegistro = body.tipoRegistro
+    registro.tipoRegistro = body.tipo_registro
     registro.dataRegistro = DateTime.now()
     registro.funcionario_id = body.funcionario_id
     registro.animal_id = body.animal_id
@@ -99,7 +99,7 @@ export default class FuncinariosController {
 
     await registro.save()
   }
-
+  /*
   async teste({ request, params }: HttpContext) {
     const body = request.body()
 
