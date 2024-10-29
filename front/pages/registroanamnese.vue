@@ -55,7 +55,6 @@
                         <textarea id="registroSaude" placeholder="Digite o estado de saúde" required v-model="registro.registroSaude"></textarea>
 
                         <button type="submit" class="button-enviar">Cadastrar</button>
-                        <button type="button" class="button-enviar" @click="salvarDados">Teste funcionario</button>
                     </form>
                 </div>
             </div>
@@ -146,7 +145,8 @@ export default {
             };
             
             try {
-                await teste('POST','registro/', dadosRegistro, '');
+                await teste('POST','funcionarios/AdicionaRegistro', dadosRegistro, '');
+
                 alert('Dados registrados com sucesso!');
                 this.$router.push('/hubadmin');
             } catch (error) {

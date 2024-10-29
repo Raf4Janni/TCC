@@ -73,7 +73,7 @@ router.post('/enderecos/:clinica_id/:pessoa_id/teste', [EnderecosController, 'st
 router.resource('/funcionarios', FuncionariosController).apiOnly()
 router.get('/funcionarios/BuscaFuncionarioPelaPessoa/:pessoa_id', [FuncionariosController, 'BuscaFuncionarioPelaPessoa'])
 router.post('/funcionarios/AlteraAnimal/:animal_id', [FuncionariosController, 'AlteraAnimal'])
-//router.post('/funcionarios/AdicionaRegistro/', [FuncionariosController, 'teste'])
+router.post('/funcionarios/AdicionaRegistro/', [FuncionariosController, 'AdicionaRegistro'])
 
 //ROTA DA PESSOA
 //router.resource('/pessoas', PessoasController).apiOnly()
