@@ -20,7 +20,7 @@
           <nuxt-link :to="`/editarperfil`"><button>Editar seus Dados</button></nuxt-link>
         </div>
         <div v-if="isCliente" style="display: flex; gap: 10px; margin-top: 20px; align-items: center; margin-left: 30%;">
-          <nuxt-link to="/loginadmin"><button>Acesso rápido</button></nuxt-link>
+          <nuxt-link to="/hubadmin"><button>Acesso rápido</button></nuxt-link>
           
         </div>
         <button @click="logout">Logout</button>
@@ -44,7 +44,11 @@
     },
     mixins: [session],
     methods: {
-      async carregarDados() {
+      
+      formatarData(dataString) {
+        const partes = dataString.split('-');
+        return `${partes[2]}/${partes[1]}/${partes[0]}`;
+      },async carregarDados() {
         try {
           const id = this.get_session('id');
           const result = await get(`pessoas/${id}`);
@@ -63,10 +67,6 @@
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);
         }
-      },
-      formatarData(dataString) {
-        const partes = dataString.split('-');
-        return `${partes[2]}/${partes[1]}/${partes[0]}`;
       },
       logout() {
         this.clear_storage();

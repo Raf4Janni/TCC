@@ -31,10 +31,7 @@ export default class Registro extends BaseModel {
   declare tipoRegistro: string
 
   @column()
-  declare voluntario_id: number
-
-  @column()
-  declare veterinario_id: number
+  declare funcionario_id: number
 
   @column()
   declare animal_id: number

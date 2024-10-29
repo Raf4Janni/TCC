@@ -40,7 +40,7 @@
         <div class="divadm">
             <div class="divimgadm"><img class="imgadm" src="/components/assets/img/fichaanamnese.jfif" /> </div>
             <h3>Ficha Anamnese</h3>
-            <br><nuxt-link to="/fichaanamnese"><button class="btnlink">Ir Para</button></nuxt-link>
+            <br><nuxt-link to="/registroanamnese"><button class="btnlink">Ir Para</button></nuxt-link>
         </div>
        
       </section>

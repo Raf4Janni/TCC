@@ -71,7 +71,9 @@ router.post('/enderecos/:clinica_id/:pessoa_id/teste', [EnderecosController, 'st
 
 //ROTAS DO FUNCIONARIO
 router.resource('/funcionarios', FuncionariosController).apiOnly()
+router.get('/funcionarios/BuscaFuncionarioPelaPessoa/:pessoa_id', [FuncionariosController, 'BuscaFuncionarioPelaPessoa'])
 router.post('/funcionarios/AlteraAnimal/:animal_id', [FuncionariosController, 'AlteraAnimal'])
+//router.post('/funcionarios/AdicionaRegistro/', [FuncionariosController, 'teste'])
 
 //ROTA DA PESSOA
 //router.resource('/pessoas', PessoasController).apiOnly()
@@ -100,7 +102,6 @@ router.post('/veterinarios/AdicionaRegistro/:veterinario_id', [VeterinarioContro
 router.resource('/voluntarios', VoluntarioController).apiOnly()
 router.post('/voluntarios/AdicionaAnimail', [VoluntarioController, 'AdicionaAnimal'])
 router.post('/voluntarios/AlteraAnimal/:animal_id', [VoluntarioController, 'AlteraAnimal'])
-router.post('/voluntarios/AdicionaRegistro/:voluntario_id', [VoluntarioController, 'AdicionaRegistro'])
 router.post('/voluntarios/CriaAdocao', [VoluntarioController, 'CriaAdocao'])
 
 /**

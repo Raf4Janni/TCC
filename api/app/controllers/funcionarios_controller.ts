@@ -4,6 +4,7 @@ import { DateTime } from 'luxon'
 import Funcionario from '#models/funcionario'
 import Pessoa from '#models/pessoa'
 import Animal from '#models/animal'
+import Registro from '#models/registro'
 
 export default class FuncinariosController {
   async index({}: HttpContext) {
@@ -76,4 +77,43 @@ export default class FuncinariosController {
 
     await animal.save()
   }
+
+  async BuscaFuncionarioPelaPessoa({params} : HttpContext){
+    const funcionario = (await Funcionario.query().where('pessoa_id', params.pessoa_id))[0]
+    
+    return funcionario
+  }
+  /*
+  async AdicionaRegistro({ request, params }: HttpContext) {
+    const body = request.body()
+
+    let registro = new Registro()
+
+    registro.autor = body.autor
+    registro.informacoes = body.informacoes
+    registro.tipoRegistro = body.tipoRegistro
+    registro.dataRegistro = DateTime.now()
+    registro.funcionario_id = body.funcionario_id
+    registro.animal_id = body.animal_id
+    registro.criadoEm = DateTime.now()
+
+    await registro.save()
+  }
+
+  async teste({ request, params }: HttpContext) {
+    const body = request.body()
+
+    let registro = new Registro()
+
+    registro.autor = body.autor
+    registro.informacoes = body.informacoes
+    registro.tipoRegistro = body.tipoRegistro
+    registro.dataRegistro = DateTime.now()
+    registro.funcionario_id = body.funcionario_id
+    registro.animal_id = body.animal_id
+    registro.criadoEm = DateTime.now()
+
+    //await registro.save()
+  }
+    */
 }

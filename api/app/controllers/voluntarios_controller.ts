@@ -35,22 +35,6 @@ export default class VoluntariosController {
     console.log(animal)
   }
 
-  async AdicionaRegistro({ request, params }: HttpContext) {
-    const body = request.body()
-
-    let registro = new Registro()
-
-    registro.autor = body.autor
-    registro.informacoes = body.informacoes
-    registro.tipoRegistro = body.tipoRegistro
-    registro.dataRegistro = DateTime.now()
-    registro.voluntario_id = params.voluntario_id
-    registro.veterinario_id = params.veterinario_id
-    registro.animal_id = body.animal_id
-    registro.criadoEm = DateTime.now()
-
-    await registro.save()
-  }
 
   async AlteraAnimal({ request, params }: HttpContext) {
     const body = request.body()
