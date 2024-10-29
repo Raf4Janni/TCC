@@ -9,7 +9,25 @@
           </select>
           <button @click="carregarDados">Mostrar Todos</button>
         </div>
-        <div class="div2" v-for="animal in animais" :key="animal.id">
+        <div v-if="animalFiltrado" class="div2">
+          <div>
+            <ul>
+              <li>
+                <h2>Nome do Animal: {{ animalFiltrado.nome }}</h2>
+                <p>Data de nascimento: {{ animalFiltrado.dataNascimento }}</p>
+                <p>Espécie: {{ animalFiltrado.especie }}</p>
+                <p>Raça: {{ animalFiltrado.raca }}</p>
+                <p>Sexo: {{ animalFiltrado.sexo }}</p>
+                <p>Cor: {{ animalFiltrado.cor }}</p>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <!-- Verifica se há uma imagem específica para o animal -->
+            <img :src="animalFiltrado.imagemUrl || '/components/assets/img/TechPaws.png'" class="imgsection" alt="Foto do Animal">
+          </div>
+        </div>
+        <div v-else class="div2" v-for="animal in animais" :key="animal.id">
           <div>
             <ul>
               <li>
@@ -41,12 +59,14 @@
     data() {
       return {
         animais: [], // Array para armazenar os dados dos animais
+        animalFiltrado: null,
       };
     },
     mixins: [session],
     methods: {
       async carregarDados() {
         try {
+          this.animalFiltrado = null;
           const route = useRoute();
           const id = route.params.id; // Obtenha o id da rota, se necessário
           const result = await get('animais', id); // Chamada à API para buscar os animais
@@ -56,6 +76,15 @@
           console.error('Erro ao carregar os dados:', error);
         }
       },
+      async carregarAnimal(){
+        try{
+          if(!this.selectedAnimal) return;
+          const result = await get(`animais/${this.selectedAnimal}`);
+          this.animalFiltrado = result;
+        }catch(error){
+          console.error('Erro ao carregar o animal',error);
+        }
+      }
     },
     mounted() {
       // Carrega os dados automaticamente quando o componente é montado
