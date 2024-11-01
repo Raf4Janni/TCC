@@ -40,6 +40,7 @@ O TechPaws é um software gratuito desenvolvido para auxiliar abrigos de animais
 
 7. **Criar o arquivo .env na pasta API e copiar o seguinte código**:
 
+    ```bash
     TZ=UTC
     PORT=3333
     HOST=localhost
