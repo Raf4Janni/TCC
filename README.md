@@ -39,23 +39,25 @@ O TechPaws é um software gratuito desenvolvido para auxiliar abrigos de animais
    npm install
 
 7. **Criar o arquivo .env na pasta API e copiar o seguinte código**:
-    TZ=UTC<br>
-    PORT=3333<br>
-    HOST=localhost<br>
-    LOG_LEVEL=info<br>
-    APP_KEY=U1YG521iMqmKmFzTno29H6plVlRLjBJf<br>
-    NODE_ENV=development<br>
-    DB_HOST=pgsql.projetoscti.com.br<br>
-    DB_PORT=5432<br>
-    DB_USER=projetoscti20<br>
-    DB_PASSWORD=eq33A321<br>
-    DB_DATABASE=projetoscti20<br>
+
+    TZ=UTC
+    PORT=3333
+    HOST=localhost
+    LOG_LEVEL=info
+    APP_KEY=U1YG521iMqmKmFzTno29H6plVlRLjBJf
+    NODE_ENV=development
+    DB_HOST=pgsql.projetoscti.com.br
+    DB_PORT=5432
+    DB_USER=projetoscti20
+    DB_PASSWORD=eq33A321
+    DB_DATABASE=projetoscti20
 
 8.**Criar as tabelas no seu local de hospedagem do banco de dados.**
 
 9.**Executar em dois terminais distintos do VS Code os seguintes comandos para rodar o software com êxito**:
-    cd api<br>
-    node ace serve<br>
+
+    cd api
+    node ace serve
 
     cd front
     npm run dev
