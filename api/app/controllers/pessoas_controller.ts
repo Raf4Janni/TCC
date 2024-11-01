@@ -38,9 +38,9 @@ export default class PessoasController {
     pessoa.criadoEm = DateTime.now()
 
     await pessoa.save()
-    
-    const ultimoIdRegistrado = await db.from('pessoas').orderBy('id', 'desc').first();
-    const idRegistrado = ultimoIdRegistrado?.id;
+
+    const ultimoIdRegistrado = await db.from('pessoas').orderBy('id', 'desc').first()
+    const idRegistrado = ultimoIdRegistrado?.id
 
     let cliente = new Cliente()
     cliente.pessoa_id = idRegistrado

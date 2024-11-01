@@ -78,7 +78,7 @@ export default class FuncinariosController {
     await animal.save()
   }
 
-  async BuscaFuncionarioPelaPessoa({params} : HttpContext){
+  async BuscaFuncionarioPelaPessoa({ params }: HttpContext) {
     const funcionario = (await Funcionario.query().where('pessoa_id', params.pessoa_id))[0]
 
     return funcionario
