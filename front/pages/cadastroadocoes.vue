@@ -52,7 +52,7 @@ export default {
 
         this.isCliente = this.get_session('cargo') === 'cliente' ? false : true;
 
-        this.animais = response
+        this.animais = response.filter(animal => !animal.adotado);
       } catch (error) {
         console.error('Erro ao carregar as pessoas:', error);
       }

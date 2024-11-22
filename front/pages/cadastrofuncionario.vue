@@ -92,7 +92,7 @@ export default {
         await teste('POST', 'funcionarios/', dadosFuncionario, "");
         
         alert('Funcionário cadastrado com sucesso!');
-        this.$router.push('/loginadmin');
+        this.$router.push('/hubadmin');
       } catch (error) {
         console.error('Erro ao cadastrar o funcionário:', error);
       }

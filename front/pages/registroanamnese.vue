@@ -55,7 +55,6 @@
                         <textarea id="registroSaude" placeholder="Digite o estado de saúde" required v-model="registro.registroSaude"></textarea>
 
                         <button type="submit" class="button-enviar">Cadastrar</button>
-                        <button type="button" class="button-enviar" @click="salvarDados">Teste funcionario</button>
                     </form>
                 </div>
             </div>
@@ -134,6 +133,7 @@ export default {
         },
         async salvarDados() {
             const funcionario = await get(`funcionarios/BuscaFuncionarioPelaPessoa/${this.get_session('id')}`);
+            console.log(funcionario)
             
             const dadosRegistro = {
                 autor: this.pessoa.nome,

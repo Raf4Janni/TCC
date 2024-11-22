@@ -29,6 +29,7 @@ export default class VoluntariosController {
     animal.localResgate = body.localResgate
     animal.estadoSaude = body.estadoSaude
     animal.raca = body.raca
+    animal.imagemAnimal = body.imagemAnimal
 
     await animal.save()
 
@@ -56,14 +57,16 @@ export default class VoluntariosController {
 
   async CriaAdocao({ request }: HttpContext) {
     const body = request.body()
-
+    let animal = await Animal.findOrFail(body.animal_id)
     let adocao = new Adocao()
+    //console.log(animal)
 
+    animal.adotado = true
     adocao.animal_id = body.animal_id
     adocao.pessoa_id = body.pessoa_id
-
-    console.log(adocao)
+    
     await adocao.save()
+    await animal.save()
     
   }
   

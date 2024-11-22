@@ -44,6 +44,9 @@
       <label for="estadoSaude">Estado de saúde</label>
       <input type="text" id="estadoSaude" placeholder="Digite o estado de saúde" required>
 
+      <label for="file">Imagem do animal</label>
+      <input type="file" name="file" id="file">
+
       <div class="button-container">
         <button type="submit" class="button-enviar">Cadastrar</button>
       </div>
@@ -55,6 +58,7 @@
 
 <script>
 import { get, teste } from '../src/Api2';
+import {uploadImage} from '../src/Imagem';
 import sessions from '~/mixin/session';
   export default {
     data(){
@@ -63,7 +67,8 @@ import sessions from '~/mixin/session';
         selectedRaca: null,
         especies: [],
         racas: [],
-        isCliente: null
+        isCliente: null,
+        CLIENT_ID: 'd340f9835359bb8',
       };
     },
     mixins: [sessions],
@@ -91,14 +96,15 @@ import sessions from '~/mixin/session';
         const cor = document.getElementById('cor').value;
         const localResgate = document.getElementById('localResgate').value;
         const estadoSaude = document.getElementById('estadoSaude').value;
+        const file = document.getElementById('file')
 
         const especies = this.especies.find(e => e.id === this.selectedEspecie);
         const especie = especies.nome;
         const racas = this.racas.find(r => r.id === this.selectedRaca);
         const raca = racas.nome;
-        console.log(especie, raca, especie_id, raca_id)
 
-        
+        const imagem = await uploadImage(file)
+        console.log(imagem)
         const data = {
           nome,
           sexo,
@@ -111,8 +117,9 @@ import sessions from '~/mixin/session';
           estadoSaude
         };
 
-          await teste('POST', 'voluntarios/AdicionaAnimail', data, '');
-          this.$router.push("/loginadmin");
+          //console.log(data)
+          //await teste('POST', 'voluntarios/AdicionaAnimail', data, '');
+          //this.$router.push("/hubadmin");
         } catch (error) {
           console.error('Erro ao carregar os dados:', error);
         }
@@ -125,10 +132,45 @@ import sessions from '~/mixin/session';
       } catch (error) {
         console.error('Erro ao carregar as raças:', error);
       }
-    },
+      },
+      async doUpload(url, options){
+        const promiseCallback = (resolve, reject) => {
+          const getFetchJson = (response) => {
+            if(!response.ok) return reject(response);
+            return response.json().then(resolve);
+          }
+          fetch(url, options)
+            .then(getFetchJson)
+            .catch(reject);
+          };
+        return new Promise(promiseCallback);
+        },
+      async addImage(url){
+        console.log(url)
+      },
+      async onSucess(result){
+        const { data: { link } } = result;
+        this.addImage(link)
+      },
+      async uploadImage(){
+        const file = document.getElementById('file');
+        const data = new FormData();
+        data.append('image', file.files[0]);
+
+        this.doUpload('https://api.imgur.com/3/image', {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Authorization': `Client-ID ${this.CLIENT_ID}`,
+          }
+        })
+        .then(this.onSuccess)
+        .catch(console.error);
+      },
     },
     mounted() {
         this.carregarEspecies();
+        
     },
   };
 </script>

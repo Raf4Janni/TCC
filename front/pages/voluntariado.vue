@@ -19,27 +19,19 @@
                   <h2>Formulário</h2>
                 <li>
                   <label for="">Nome</label>
-                <input type="text" name="" id="nome" placeholder="Digite seu nome" required>
+                <input type="text" name="" id="nome" placeholder="Digite seu nome"  disabled required>
 
                 <label for="">Data de nascimento</label>
-                <input type="date" name="" id="dataNascimento" placeholder="Digite sua data de nascimento" required>
+                <input type="date" name="" id="dataNascimento" placeholder="Digite sua data de nascimento" disabled required>
 
                 <label for="">CPF</label>
-                <input type="text" name="" id="cpf" placeholder="Digite seu CPF" required>
+                <input type="text" name="" id="cpf" placeholder="Digite seu CPF" disabled required>
 
                 <label for="">E-mail</label>
-                <input type="email" name="" id="email" placeholder="Digite seu e-mail" required>
-
-                <label for="">Senha</label>
-                <input type="password"
-                name="" id=""
-                placeholder="Digite sua senha"
-                required>
+                <input type="email" name="" id="email" placeholder="Digite seu e-mail" disabled required>
 
                 <label for="">RG</label>
-                <input type="text"
-                name="" id=""
-                placeholder="Digite seu RG"
+                <input type="text" name="" id="" placeholder="Digite seu RG"
                 required>
 
                 <fieldset>

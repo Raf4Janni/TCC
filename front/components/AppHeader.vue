@@ -5,7 +5,6 @@
     <nuxt-link to="/sobre" class="linkheader"><h4>Sobre</h4></nuxt-link>
     <nuxt-link to="/adocoes" class="linkheader"><h4>Adoções</h4></nuxt-link>
     <nuxt-link to="/doacoes" class="linkheader"><h4>Doações</h4></nuxt-link>
-    <nuxt-link to="/voluntariado" class="linkheader"><h4>Voluntariado</h4></nuxt-link>
 
     <nuxt-link :to="isLoggedIn ? '/perfil' : '/login'" class="linkheader">
       <img class="icone_user" src="/components/assets/img/perfil.svg" />
@@ -21,7 +20,6 @@
       <nuxt-link to="/sobre">Sobre</nuxt-link>
       <nuxt-link to="/adocoes">Adoções</nuxt-link>
       <nuxt-link to="/doacoes">Doações</nuxt-link>
-      <nuxt-link to="/voluntariado">Voluntariado</nuxt-link>
 
       <nuxt-link :to="isLoggedIn ? '/perfil' : '/login'">Perfil</nuxt-link>
     </div>

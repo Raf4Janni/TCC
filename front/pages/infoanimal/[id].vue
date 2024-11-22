@@ -14,7 +14,6 @@
             <p>Sexo: {{ animal.sexo }}</p>
           </li>
         </ul>
-        <button @click="adocaAnimal">Adotar</button>
       </div>
       <p v-else>Carregando informações do animal...</p>
 

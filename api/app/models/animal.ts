@@ -38,6 +38,9 @@ export default class Animal extends BaseModel {
   declare estadoSaude: string
 
   @column()
+  declare imagemAnimal: string
+
+  @column()
   declare adotado: boolean
   /*
   @hasOne(() => Especie)
