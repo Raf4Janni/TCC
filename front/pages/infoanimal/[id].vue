@@ -17,8 +17,10 @@
       </div>
       <p v-else>Carregando informações do animal...</p>
 
-      <div class="divficha" v-for="registro in registros" :key="registro.id">
+      <div class="divficha" v-if="registros.length > 0">
         <h2>Ficha de Anamnese - Histórico Clínico</h2>
+        <div class="divficha" v-for="registro in registros" :key="registro.id">
+        
         <ul>
           <li>
             <p>Autor: {{ registro.autor }}</p>
@@ -26,7 +28,10 @@
             <p>Informações: {{ registro.informacoes }}</p>
           </li>
         </ul>
+        </div>
       </div>
+      <p v-else></p>
+      
     </section>
   </div>
 </template>
@@ -56,6 +61,7 @@ export default {
 
         const result2 = await get(`registros/animal/${id}`);
         this.registros = result2;
+        console.log(this.registros)
       } catch (error) {
         console.error('Erro ao carregar os dados:', error);
       }

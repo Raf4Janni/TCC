@@ -15,7 +15,6 @@ export default class extends BaseSchema {
       table.string('local_resgate')
       table.string('estado_saude')
       table.string('raca')
-      table.string('imagemAnimal')
       table.boolean('adotado')
       table.timestamp('criado_em')
       table.timestamp('deletado_em')
